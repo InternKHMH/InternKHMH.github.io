@@ -1,0 +1,10 @@
+D:\ThucTapTMA\Intern_Management\Model\bin\Debug\Model.dll.config
+D:\ThucTapTMA\Intern_Management\Model\bin\Debug\Model.dll
+D:\ThucTapTMA\Intern_Management\Model\bin\Debug\Model.pdb
+D:\ThucTapTMA\Intern_Management\Model\bin\Debug\EntityFramework.dll
+D:\ThucTapTMA\Intern_Management\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\ThucTapTMA\Intern_Management\Model\bin\Debug\EntityFramework.xml
+D:\ThucTapTMA\Intern_Management\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\ThucTapTMA\Intern_Management\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\ThucTapTMA\Intern_Management\Model\obj\Debug\Model.dll
+D:\ThucTapTMA\Intern_Management\Model\obj\Debug\Model.pdb

@@ -1,0 +1,392 @@
+*{margin: 0; padding: 0;}
+
+body,html {
+    width: 100%;
+    position: relative;
+}
+
+.feature_member i.fa.fa-plus-square {
+    margin-left: 10px;
+    color: pink;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.memberlist i.fa.fa-times {
+    float: right;
+    margin-right: 10px;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+.nutAddMember i.fa.fa-user-plus {
+    font-size: 30px;
+    color: pink;
+    cursor: pointer;
+}
+
+.nutBackDashboard.btn.btn-danger.float-right {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    right: 0;
+}
+
+
+.DetailProject{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    color: white;
+    opacity: 0;
+    visibility:hidden;
+    transform: translateZ(-100px) scale(0.5);
+    transition:0.5s;
+}
+.dixuong{
+    animation: DetailProjectGoDown 0.5s forwards;
+}
+@-webkit-keyframes DetailProjectGoDown{
+   
+    0%{opacity:1;visibility: visible;transform:translateZ(0px) scale(1);}
+     100%{opacity:0;visibility: hidden;transform: translateZ(-100px) scale(0.5); }
+}
+
+i.ngay {
+    display: block;
+    width: 100%;
+    border: 3px solid white;
+    position: relative;
+}
+
+i.ngay:before {
+    content: "";
+    background-color: green;
+    width: 30%;
+    position: absolute;
+    height: 7px;
+    top: -3px;
+    left: -3px;
+}
+.container.hienlen {
+    transition:0.5s;
+    animation: hienlen 1s forwards;
+}
+@-webkit-keyframes hienlen {
+    0%{opacity:0;visibility: hidden;transform: translateZ(-100px) scale(0.5); }
+    100%{opacity:1;visibility: visible;transform:translateZ(0px) scale(1);}
+}
+
+.row.tk_number_project span {
+    font-size: 23px;
+    color: green;
+}
+
+.tk_number-project span {
+    font-size: 20px;
+}
+
+
+
+.row.Project .col-sm-1 {
+    margin-bottom: 21px;
+}
+
+.row.tk_number_project {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.row.Project input.form-control {
+    width: 289px;
+}
+
+table i.fa.fa-times-circle {
+    color: red;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.menu .col-sm-10 {
+    margin-top: 9px;
+    text-align: right;
+    padding-right: 132px;
+}
+
+.row.menu span {
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.row.menu {
+    margin-bottom: 28px;
+    background-color: black;
+    padding: 21px;
+}
+
+.menu ul li {
+    display: inline-block;
+    margin-right:  20px;
+    font-size: 17px;
+}
+
+.menu ul {
+    list-style: none;
+    display: inline;
+} 
+
+
+/* hieu ung  cho trang dashboard  */
+.godown{
+    opacity:0;
+    transition:0.4;
+    transform: translateY(-100px);
+    animation:godown 1s forwards;
+}
+@-webkit-keyframes godown {
+    0%{opacity:0;transform:translateY(-100px);}
+    100%{opacity:1;transform:translateY(0px);}
+}
+
+
+.Project{
+    opacity:0;
+    transition:0.4s;
+    transform:translateY(100px);
+    animation: goup 1s forwards;
+    animation-delay:0.7s;
+    overflow: hidden;
+}
+
+@-webkit-keyframes goup{
+    0%{opacity:0;transform: translateY(100px);}
+    100%{opacity:1;transform:translateY(0px);}
+}
+
+/* end hieu ung cho trang dashboard */
+/* 
+css cho footer */
+
+.footer-distributed{
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+
+	padding: 55px 50px;
+	margin-top: 80px;
+}
+.container-fluid.fot {
+    padding: 0px;
+    position: relative;
+    bottom: 0;
+}
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+	width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3{
+	color:  #ffffff;
+	font: normal 36px 'Cookie', cursive;
+	margin: 0;
+}
+
+.footer-distributed h3 span{
+	color:  #5383d3;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+	color:  #ffffff;
+	margin: 20px 0 12px;
+	padding: 0;
+}
+
+.footer-distributed .footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+
+.footer-distributed .footer-company-name{
+	color:  #8f9296;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+	width: 35%;
+}
+
+.footer-distributed .footer-center i{
+	background-color:  #33383b;
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+	vertical-align: middle;
+	margin:0;
+}
+
+.footer-distributed .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+
+.footer-distributed .footer-center p a{
+	color:  #5383d3;
+	text-decoration: none;;
+}
+
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	color:  #92999f;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+	display: block;
+	color:  #ffffff;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+	.footer-distributed{
+		font: bold 14px sans-serif;
+	}
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+
+}
+
+
+
+
+/* end css cho footer */
+/* 
+css cho man hinh di dong */
+@media (max-width:576px)
+{
+    *{margin:0px;padding:0px;}
+
+.Project input.form-control {
+    width: 100%;
+    display: block;
+}
+
+h3.titleProject {
+    margin-left: 15px;
+}
+
+.row.tk_number_project h3 {
+    font-size: 17px;
+}
+
+.row.menu li {
+    margin: 6px 0px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid wheat;
+    width: 100%;
+    font-size: 16px!important;
+}
+
+.menu ul {
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin-left: 70px;
+}
+
+.row.menu span {
+    text-align: center;
+    display: block;
+    font-size: 31px!important;
+}
+}

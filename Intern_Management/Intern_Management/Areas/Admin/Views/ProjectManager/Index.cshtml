@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutProject.cshtml";
+    var ListProject = (List<Model.EF.Project>)ViewBag.DanhSachProject;
+}
+
+<div class="container">
+    <div class="row tk_number_project">
+        <div class="col-xs-6 text-xs-center godown">
+            <h3 class="numberproject">Total number project: </h3>
+            <span>10</span>
+        </div>
+        <div class="col-xs-6 text-xs-center godown">
+            <h3 class="numberinter">Total number intern: </h3>
+            <span>10</span>
+        </div>
+
+    </div>
+
+    <div class="row Project">
+
+        <h3 class="titleProject">Project</h3>
+        <div class="col-sm-1">
+
+
+            <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Seach Project">
+
+        </div>
+        <div class="col-sm-11">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Leader</th>
+                        <th>Start date</th>
+                        <th>End date</th>
+                        <th>Status</th>
+                        <th><i class="fa fa-bold"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if(ListProject!=null)
+                    {
+                         foreach (var item in ListProject)
+                        {
+                            <tr>
+                                <td scope="row"><a href="" class="linkProject">@item.ProjectName</a></td>
+                                <td>@item.Leadername</td>
+                                <td>@item.StartDate</td>
+                                <td>@item.EndDate</td>
+                                <td>@item.StatusID</td>
+                                <td><i class="fa fa-times-circle"></i>	</td>
+                            </tr>
+                        }
+                    }
+                    
+                    <tr>
+                        <td scope="row"><a href="" class="linkProject">Intern-khmh</a></td>
+                        <td>Phuong Vo</td>
+                        <td>4/5/2018</td>
+                        <td>....</td>
+                        <td>10%</td>
+                        <td> <i class="fa fa-times-circle"></i>	</td>
+                    </tr>
+                    <tr>
+                        <td scope="row"><a href="">Intern-khmh</a></td>
+                        <td>Phuong Vo</td>
+                        <td>4/5/2018</td>
+                        <td>....</td>
+                        <td>10%</td>
+                        <td> <i class="fa fa-times-circle"></i>	</td>
+                    </tr>
+                    <tr>
+                        <td scope="row"><a href="">Intern-khmh</a></td>
+                        <td>Phuong Vo</td>
+                        <td>4/5/2018</td>
+                        <td>....</td>
+                        <td>10%</td>
+                        <td> <i class="fa fa-times-circle"></i>	</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="btn btn-outline-success">Add Project </div>
+    <!-- end row project  -->
+</div>
+
+
+
