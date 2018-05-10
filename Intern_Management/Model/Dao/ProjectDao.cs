@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Model.EF;
 
+
 namespace Model.Dao
 {
     
@@ -22,7 +23,9 @@ namespace Model.Dao
         }
         public List<Project> ListAll()
         {
+            
             return db.Projects.ToList();
+           
         }
 
     }

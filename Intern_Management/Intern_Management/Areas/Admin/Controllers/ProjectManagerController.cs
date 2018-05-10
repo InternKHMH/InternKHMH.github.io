@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Model.Dao;
+using Model.EF;
 
 namespace Intern_Management.Areas.Admin.Controllers
 {
@@ -12,8 +13,43 @@ namespace Intern_Management.Areas.Admin.Controllers
         // GET: Admin/ProjectManager
         public ActionResult Index()
         {
+            int ProjectCompleted = 0,ProjectProcessing=0;
+
+            Dictionary<int, string> StatusName = new Dictionary<int, string>();
+            List<StatusCheck> listStatus = new StatusDao().GetAll() ;
+
+            foreach(var item in listStatus)
+            {
+                int key = item.StatusID;
+                string value = item.StatusName;
+                if (key == 1)
+                {
+                    ProjectCompleted++;
+                }
+                else
+                    ProjectProcessing++;
+
+                StatusName.Add(key, value);
+            }
+
+
+            ViewBag.StatusName = StatusName;
+            ViewBag.Completed = ProjectCompleted;
+            ViewBag.Processing = ProjectProcessing;
+
+
             ViewBag.DanhSachProject = new ProjectDao().ListAll();
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult GetInforProject(int ProjectID)
+        {
+            //lây thông tin Project với id trên
+
+            return Json(new {
+                hoten = ProjectID
+            });
         }
     }
 }

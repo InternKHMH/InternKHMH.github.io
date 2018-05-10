@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="~/Asset/vendor/bootstrap.js"></script>
-    <script type="text/javascript" src="~/Asset/js/1.js"></script>
+    @*<script type="text/javascript" src="~/Asset/js/1.js"></script>*@
     <link rel="stylesheet" href="~/Asset/vendor/bootstrap.css">
     <link rel="stylesheet" href="~/Asset/vendor/font-awesome.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -195,5 +195,8 @@
         </div>
 
     </div>
+
+
+    @RenderSection("jsFooter", required:false)
 </body>
 </html>
