@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<title> Example </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">  
+	<script type="text/javascript" src="vendor/bootstrap.js"></script>
+ 	<script type="text/javascript" src="InternMemberManager.js"></script>
+	<link rel="stylesheet" href="vendor/bootstrap.css">
+	<link rel="stylesheet" href="vendor/font-awesome.css">
+ 	<link rel="stylesheet" href="InternMemberManager.css">
+</head>
+<body >
+ 	
+	<div class="container hienlen">
+		<div class="den"></div>
+		<div class="row">
+			<div class="col-sm-9">
+				<div class="btn btn-success">Add user</div>
+			</div>
+			<div class="col-sm-3">
+				<input type="text" name="" class="form-group" placeholder="Search user">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<table class="table tbUser">
+			  <caption>List of users</caption>
+			  <thead>
+			    <tr>
+			      <th scope="col">#</th>
+			      <th scope="col">UserName</th>
+			      <th scope="col">Full Name</th>
+			      <th scope="col">Status</th>
+			      <th scope="col">Number Project Join</th>
+			      <th scope="col"><i class="fa fa-bolt"></i></th>
+
+
+			    </tr>
+			  </thead>
+			  <tbody>
+
+			    <tr data-idUser="1">
+			      <th scope="row">1</th>
+			      <td><a class="linhdetail" href="#">Mark</a></td>
+			      <td>Otto</td>
+			     
+			      <td>Mark</td>
+			      <td>Otto</td>
+			  
+			      <td><i class="fa fa-user-times"></i></td>
+
+			    </tr>
+			   
+				<tr data-idUser="2">
+			      <th scope="row">1</th>
+			      <td><a class="linhdetail" href="#">Mark</a></td>
+			      <td>Otto</td>
+			     
+			      <td>Mark</td>
+			      <td>Otto</td>
+			  
+			      <td><i class="fa fa-user-times"></i></td>
+
+			    </tr>
+			   
+				<tr>
+			      <th scope="row">1</th>
+			      <td><a class="linhdetail" href="#">Mark</a></td>
+			      <td>Otto</td>
+			     
+			      <td>Mark</td>
+			      <td>Otto</td>
+			  
+			      <td><i class="fa fa-user-times"></i></td>
+
+			    </tr>
+			   
+		
+			  </tbody>
+			</table><!--  end  detail list user -->
+
+			</div> <!-- end col-sm-12 -->
+		</div> <!-- end row -->
+		
+	</div> <!-- end container -->
+
+
+	<div class="detailUser">
+	<div class="nutthoat btn btn-danger">X</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8">
+					<div class="row">
+						<div class="col-sm-4">
+							<h3 class="Thongtin">Information</h3>
+							<div>IDIntern: 14</div>
+							<div>FullName: Nguyen Thanh Nguyen</div>
+							<div>UserName: ThanhNguyen</div>
+						</div>
+						<div class="col-sm-8">
+							<table class="table tbdetailUser">
+							  <caption>List of users</caption>
+							  <thead>
+							    <tr>
+							      <th scope="col">STT</th>
+							      <th scope="col">ProjectName</th>
+							      <th scope="col">Status</th>
+							      <th scope="col">Role</th>
+							     
+							    </tr>
+							  </thead>
+							  <tbody>
+							    <tr>
+							      <th scope="row">1</th>
+							      <td>Mark</td>
+							      <td>Otto</td>
+							      <td>Mark</td>
+							    </tr>
+							   <tr>
+							      <th scope="row">1</th>
+							      <td>Mark</td>
+							      <td>Otto</td>
+							      <td>Mark</td>
+							    </tr>
+							   <tr>
+							      <th scope="row">1</th>
+							      <td>Mark</td>
+							      <td>Otto</td>
+							      <td>Mark</td>
+							    </tr>
+							   
+								    
+								  </tbody>
+							</table><!--  end  detail list user -->
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+		</div>
+		<div class="sukien">
+			<span class="btn btn-success nutupdate">Update</span>
+			<span class="btn btn-warning">Cancel</span>
+		</div>
+	
+	</div>
+
+</body>
+</html>
