@@ -15,7 +15,6 @@ namespace Model.EF
             Users = new HashSet<User>();
         }
 
-
         public int ProjectID { get; set; }
 
         [StringLength(100)]
@@ -31,10 +30,7 @@ namespace Model.EF
 
         public DateTime? EndDate { get; set; }
 
-        
         public int StatusID { get; set; }
-
-       
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feature> Features { get; set; }

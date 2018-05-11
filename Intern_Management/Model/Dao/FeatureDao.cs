@@ -9,10 +9,10 @@ namespace Model.Dao
 {
    public class FeatureDao
    {
-        InternShipDb db;
+        InternDB db;
         public FeatureDao()
         {
-            db = new InternShipDb();
+            db = new InternDB();
         }
         public List<Feature> GetByProjectID(int ProjectID)
         {

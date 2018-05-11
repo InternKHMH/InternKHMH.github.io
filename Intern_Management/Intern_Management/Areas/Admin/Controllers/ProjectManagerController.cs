@@ -45,10 +45,18 @@ namespace Intern_Management.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult GetInforProject(int ProjectID)
         {
-            //lây thông tin Project với id trên
+            //get information witd ProjectID
+            ProjectDao projec = new ProjectDao();
+            var ttproject = projec.GetByID(ProjectID);
+
+            //lay thong tin member
+
+
 
             return Json(new {
-                hoten = ProjectID
+                hoten = ProjectID,
+                tendk="kdjakf",
+
             });
         }
     }

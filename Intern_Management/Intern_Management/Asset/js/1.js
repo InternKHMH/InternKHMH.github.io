@@ -39,7 +39,7 @@
      	 	console.log("error");
      	 })
      	 .always(function(res) {
-     	 	console.log(res.hoten);
+     	     console.log(res.tendk);
      	 });
      	
 

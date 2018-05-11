@@ -9,10 +9,10 @@ namespace Model.Dao
 {
     public class StatusDao
     {
-        InternShipDb db;
+        InternDB db;
        public StatusDao()
         {
-            db = new InternShipDb();
+            db = new InternDB();
         }
         public List<StatusCheck> GetAll()
         {

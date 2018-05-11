@@ -16,7 +16,7 @@ namespace Model.EF
 
         public int RoleID { get; set; }
 
-        [StringLength(1)]
+        [StringLength(15)]
         public string RoleName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

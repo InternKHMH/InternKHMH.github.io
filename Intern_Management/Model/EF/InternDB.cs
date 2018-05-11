@@ -5,10 +5,10 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class InternShipDb : DbContext
+    public partial class InternDB : DbContext
     {
-        public InternShipDb()
-            : base("name=InternShipDb")
+        public InternDB()
+            : base("name=InternDB")
         {
         }
 
@@ -25,15 +25,10 @@ namespace Model.EF
                 .WithMany(e => e.Projects)
                 .Map(m => m.ToTable("ProjectMember").MapLeftKey("ProjectID").MapRightKey("UserID"));
 
-            modelBuilder.Entity<Role>()
-                .Property(e => e.RoleName)
-                .IsFixedLength()
-                .IsUnicode(false);
-
             modelBuilder.Entity<StatusCheck>()
-                .Property(e => e.StatusName)
-                .IsFixedLength()
-                .IsUnicode(false);
+                .HasMany(e => e.Projects)
+                .WithRequired(e => e.StatusCheck)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Passwords)

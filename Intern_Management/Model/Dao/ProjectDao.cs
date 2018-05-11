@@ -11,10 +11,10 @@ namespace Model.Dao
     
    public class ProjectDao
     {
-        InternShipDb db;
+        InternDB db;
         public ProjectDao ()
         {
-            db = new InternShipDb();
+            db = new InternDB();
         }
         public Model.EF.Project GetByID(int ProjectID)
         {
