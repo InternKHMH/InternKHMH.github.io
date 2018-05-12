@@ -8,3 +8,13 @@ D:\ThucTapTMA\Intern_Management\Model\bin\Debug\EntityFramework.SqlServer.xml
 D:\ThucTapTMA\Intern_Management\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\ThucTapTMA\Intern_Management\Model\obj\Debug\Model.dll
 D:\ThucTapTMA\Intern_Management\Model\obj\Debug\Model.pdb
+D:\ThTapTMA\Intern_Management\Model\bin\Debug\Model.dll.config
+D:\ThTapTMA\Intern_Management\Model\bin\Debug\Model.dll
+D:\ThTapTMA\Intern_Management\Model\bin\Debug\Model.pdb
+D:\ThTapTMA\Intern_Management\Model\bin\Debug\EntityFramework.dll
+D:\ThTapTMA\Intern_Management\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\ThTapTMA\Intern_Management\Model\bin\Debug\EntityFramework.xml
+D:\ThTapTMA\Intern_Management\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\ThTapTMA\Intern_Management\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\ThTapTMA\Intern_Management\Model\obj\Debug\Model.dll
+D:\ThTapTMA\Intern_Management\Model\obj\Debug\Model.pdb

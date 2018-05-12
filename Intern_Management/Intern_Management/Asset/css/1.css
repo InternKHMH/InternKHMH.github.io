@@ -2,6 +2,50 @@
 
 *{margin: 0; padding: 0;}
 
+.DetailProject.hienlen i.fa.fa-chevron-up {
+    font-size: 25px;
+    background-color: yellow;
+    padding: 15px;
+    color: black;
+    border-radius: 50%;
+    position: absolute;
+    transition: 0.2s;
+    cursor: pointer;
+    right: 80px;
+    bottom: 0px;
+    
+}
+
+.DetailProject.hienlen i.fa.fa-chevron-up:hover {
+    background-color: lightblue;
+    color: red;
+}
+
+.DetailProject .nutAddMember.col-sm-10 {
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 80px;
+}
+
+.DetailProject .nutAddMember.col-sm-10:hover {
+    color: lightblue;
+    transform: scale(2);
+}
+
+.container.DetailProject.hienlen {
+    padding: 0px 190px;
+    background: #177575fa;
+}
+
+.DetailProject h4.teamLeader {
+    /* text-align: center; */
+}
+
+h3.projectName.mb-2 {
+    margin-top: 26px;
+    text-align: center;
+}
+
 h3.titleProject {
     margin-bottom: 19px;
 }
@@ -48,7 +92,7 @@ span.total {
 }
 
 .nutAddMember i.fa.fa-user-plus {
-    font-size: 30px;
+    font-size: 37px;
     color: pink;
     cursor: pointer;
 }
@@ -67,7 +111,7 @@ span.total {
     width: 100%;
     height: 100%;
     background: black;
-    color: white;
+    color: #fbfbfb;
     opacity: 0;
     visibility:hidden;
     transform: translateZ(-100px) scale(0.5);
@@ -101,6 +145,7 @@ i.ngay:before {
 .container.hienlen {
     transition:0.5s;
     animation: hienlen 1s forwards;
+    overflow: auto;
 }
 @-webkit-keyframes hienlen {
     0%{opacity:0;visibility: hidden;transform: translateZ(-100px) scale(0.5); }

@@ -199,6 +199,7 @@
     <Compile Include="Areas\Admin\Controllers\InternMemberManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectManagerController.cs" />
     <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
+    <Compile Include="Common\FeatureMember.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
