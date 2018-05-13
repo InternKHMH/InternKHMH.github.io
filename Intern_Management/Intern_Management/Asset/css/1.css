@@ -1,6 +1,16 @@
 /*css trang project manager*/
 
-*{margin: 0; padding: 0;}
+
+
+
+
+.dongthemproject td fieldset label {
+    color: green;
+}
+
+span.nutcanceladd.btn.btn-outline-danger {
+    margin-top: 33px;
+}
 
 .DetailProject.hienlen i.fa.fa-chevron-up {
     font-size: 25px;
@@ -53,6 +63,10 @@ h3.titleProject {
 .Project .btn.btn-outline-success {
     display: inline-block;
     margin-bottom: 6px;
+}
+
+span.nutsaveadd.btn.btn-outline-success {
+    margin-top: 33px;
 }
 
 .row.tk_number_project h3 {
@@ -408,7 +422,35 @@ css cho footer */
     margin-bottom: 5px;
 }
 
-/* If you don't want the footer to be responsive, remove these media queries */
+*{margin: 0; padding: 0;}
+
+
+.danhsachproject tr.dongthemproject {
+    background-color: lightblue;
+    visibility: collapse;
+    transition: 0.4s;
+    animation:khoithemanxuong 1s forwards;
+
+}
+
+
+.danhsachproject tr.dongthemproject.khoithemhienlen{
+    animation:khoithemhienlen 1s forwards;
+}
+
+@-webkit-keyframes khoithemhienlen{
+    0%{transform: translateY(-200px);visibility: collapse;}
+    100%{transform: translateY(0px);visibility: visible;}
+}
+@-webkit-keyframes khoithemanxuong{
+    0%{transform: translateY(0px) scale(1);visibility: visible;}
+    100%{transform: scale(0.5);visibility: collapse;}
+    
+}
+
+
+
+/* end css cho khoi them project */
 
 @media (max-width: 880px) {
 
@@ -440,6 +482,66 @@ css cho man hinh di dong */
 @media (max-width:576px)
 {
     *{margin:0px;padding:0px;}
+
+i.fa.fa-chevron-up.nutdilen {
+    width: 50px;
+    height: 50px;
+    background-color: yellow;
+    position: absolute;
+    z-index: 3;
+    top: 60%;
+    padding-bottom: 38px!important;
+    text-align: center;
+    padding-right: 37px!important;
+    box-sizing: border-box;
+    right: 0px!important;
+}
+
+.DetailProject .feature_member h3 {
+    font-size: 20px;
+    margin-left: 10px;
+    color: yellow;
+}
+
+.feature_member table.table {
+    font-size: 8px;
+    color: #ffffff;
+    background-color: #401054;
+}
+
+.DetailProject i.fa.fa-user-plus {
+    font-size: 33px;
+    margin-left: 0px;
+}
+
+.nutAddMember.col-sm-10 {
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+.DetailProject .row.mt-2 .col-sm-2 {
+    padding-left: 35px;
+}
+
+.row.date {padding-left: 19px;}
+
+.DetailProject h4.teamLeader {
+    margin-left: 63px;
+    margin-top: 0px;
+    font-size: 17px;
+}
+
+.container.DetailProject.hienlen {
+    padding: 0px;
+    margin: 0px;
+}
+
+.DetailProject h3.projectName.mb-2 {
+    margin-bottom: 13px!important;
+    text-transform: uppercase;
+    font-size: 17px;
+}
 
 .Project input.form-control {
     width: 100%;
@@ -474,5 +576,4 @@ h3.titleProject {
     text-align: center;
     display: block;
     font-size: 31px!important;
-}
 }

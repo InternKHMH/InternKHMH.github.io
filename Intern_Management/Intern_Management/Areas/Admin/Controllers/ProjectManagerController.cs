@@ -85,11 +85,15 @@ namespace Intern_Management.Areas.Admin.Controllers
             dl.Add(ttproject.EndDate);//dl[4]==ngày kết thúc project
             dl.Add(dsFeatureMb);//dl[5] danh sách feature và member đảm nhiệm
             
-            
-            
-
-            
             return Json(dl, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Add(string ProjectName,DateTime StartDate,DateTime EndDate)
+        {
+            ArrayList ds = new ArrayList();
+            ds.Add(ProjectName);
+               ds.Add(StartDate);
+            ds.Add(EndDate);
+            return Json(ds);
         }
 
 

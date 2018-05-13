@@ -1,4 +1,4 @@
-﻿ $(function(){
+ $(function(){
    
  	var totalProject =$(".total").data("total")*20;
  	var completedProject=$(" span.completed").data("completed")*20;
@@ -33,18 +33,15 @@
      	 	data: { ProjectID: IdProject },
      	 })
      	 .done(function(res) {
-     	 	console.log("success");
-            console.log(res.length)
-            ;
 
      	 })
      	 .fail(function() {
-     	 	console.log("error");
+     	 
      	 })
      	 .always(function(res) {
      	    
              // console.log(res.dsuser);
-            console.log(res);
+            
             $('.DetailProject .projectName').html('Project Name: '+res[1]);
             $('.DetailProject .teamLeader').html('Team Leader: '+res[2]);
              
@@ -112,10 +109,57 @@
 
      $('.DetailProject .nutdilen').click(function(event){
          $(".DetailProject,html, body").animate({ scrollTop: 0 }, "slow");
-     })
+     });
+
+
+    //xu ly them project 
+    $('.nutthemproject').click(function(event){
+        //them from du lieu de nhap
+      $('.danhsachproject tr.dongthemproject').toggleClass('khoithemhienlen');
+                  
+    });
+    $('span.nutsaveadd.btn.btn-outline-success').click(function(event){
+        $('.danhsachproject tr.dongthemproject').toggleClass('khoithemhienlen');
+
+        var prname=$('.dongthemproject .projectnameadd').val();
+        var startdate=$('.dongthemproject .startdateadd').val();
+        var enddate=$('.dongthemproject .enddateadd').val();
+
+        if(prname=='')
+        {
+            
+        }
+        if(startdate=='')
+            alert("message?: DOMString");
+
+        
+
+       
+        $.ajax({
+            url: '/Admin/ProjectManager/Add',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                ProjectName:prname,
+                StartDate:startdate,
+                EndDate:enddate
+             },
+        })
+        .done(function() {
+            console.log("success");
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function(res) {
+            console.log(res);
+        });
+        
+    });
+
 
 })  
- 
+
 
  // success: function (data) {
  //                    var rows = '';
