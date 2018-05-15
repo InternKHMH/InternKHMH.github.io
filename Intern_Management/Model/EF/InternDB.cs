@@ -8,11 +8,12 @@ namespace Model.EF
     public partial class InternDB : DbContext
     {
         public InternDB()
-            : base("name=InternDB")
+            : base("name=InternDBContext")
         {
         }
 
         public virtual DbSet<Feature> Features { get; set; }
+        public virtual DbSet<ProjectMember> ProjectMembers { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<StatusCheck> StatusChecks { get; set; }
@@ -21,9 +22,9 @@ namespace Model.EF
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Project>()
-                .HasMany(e => e.Users)
-                .WithMany(e => e.Projects)
-                .Map(m => m.ToTable("ProjectMember").MapLeftKey("ProjectID").MapRightKey("UserID"));
+                .HasMany(e => e.ProjectMembers)
+                .WithRequired(e => e.Project)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<StatusCheck>()
                 .HasMany(e => e.Projects)
@@ -33,6 +34,11 @@ namespace Model.EF
             modelBuilder.Entity<User>()
                 .Property(e => e.Passwords)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.ProjectMembers)
+                .WithRequired(e => e.User)
+                .WillCascadeOnDelete(false);
         }
     }
 }

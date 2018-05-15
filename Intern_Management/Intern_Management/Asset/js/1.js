@@ -21,6 +21,7 @@
 
 
     $('.linkProject').click(function(event){
+
     	event.preventDefault();
         //cho trang daitail luôn scroll lên trên
         $(".DetailProject,html, body").animate({ scrollTop: 0 }, "slow");
@@ -115,47 +116,80 @@
     //xu ly them project 
     $('.nutthemproject').click(function(event){
         //them from du lieu de nhap
-      $('.danhsachproject tr.dongthemproject').toggleClass('khoithemhienlen');
+      $(' div.dongthemproject').toggleClass('khoithemhienlen');
+      $('div.tobangnoidung').addClass('mauden');
                   
     });
+
     $('span.nutsaveadd.btn.btn-outline-success').click(function(event){
-        $('.danhsachproject tr.dongthemproject').toggleClass('khoithemhienlen');
+       
 
         var prname=$('.dongthemproject .projectnameadd').val();
         var startdate=$('.dongthemproject .startdateadd').val();
         var enddate=$('.dongthemproject .enddateadd').val();
 
-        if(prname=='')
+        if(prname==''||startdate==''||enddate=='')
         {
-            
+             $('.dongthemproject .thongbaoloi').html('please fill in all the fields');  
+           
         }
-        if(startdate=='')
-            alert("message?: DOMString");
+        else {
 
-        
+            if(enddate<startdate)
+            {
+                $('.dongthemproject .thongbaoloi').html('check your startdate less than enddate');
+                    
+            }
+                else
+                {
+                     $(' div.dongthemproject').toggleClass('khoithemhienlen');
+                      $('div.tobangnoidung').removeClass('mauden');
+                     $.ajax({
+                        url: '/Admin/ProjectManager/Add',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            ProjectName:prname,
+                            StartDate:startdate,
+                            EndDate:enddate
+                         },
+                    })
+                    .done(function() {
+                        console.log("success");
+                    })
+                    .fail(function() {
+                        console.log("error");
+                    })
+                    .always(function(res) {
+                        // xu  ly ve lai giao dien
+                        if(res[0]!=-1)//neeu them that bai thi res =-1
+                        {
+                            var  motproject='';
+                            motproject+=' <tr>';
+                            motproject+='<td scope="row"><a href="#" data-idproject="'+res[0]+'" class="linkProject">'+prname+'</a></td>';
+                            motproject+='<td>'+res[1]+'</td>';
+                            motproject+=' <td>'+startdate+'</td>';
+                            motproject+='<td>'+enddate+'</td>';
+                            motproject+=' <td>inActive</td>';
+                            motproject+='<td><i class="fa fa-times-circle"></i></td>';
+                            motproject+='</tr>';
 
-       
-        $.ajax({
-            url: '/Admin/ProjectManager/Add',
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                ProjectName:prname,
-                StartDate:startdate,
-                EndDate:enddate
-             },
-        })
-        .done(function() {
-            console.log("success");
-        })
-        .fail(function() {
-            console.log("error");
-        })
-        .always(function(res) {
-            console.log(res);
-        });
-        
-    });
+                            $('.tddsproject .danhsachproject').append(motproject);
+                        }
+                        else
+                        {
+                              $('.dongthemproject .thongbaoloi').html('error add project');  
+                        }
+                    });
+                }
+        }
+
+    });/* end nutsave*/
+
+    $('div.dongthemproject').on('click','span.nutcanceladd.btn.btn-outline-danger',function(event){
+        $(' div.dongthemproject').toggleClass('khoithemhienlen');
+        $('div.tobangnoidung').removeClass('mauden');
+    })
 
 
 })  

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Model.EF;
 
 
+
 namespace Model.Dao
 {
     
@@ -26,6 +27,36 @@ namespace Model.Dao
             
             return db.Projects.ToList();
            
+        }
+
+        public int Add(string projectName,DateTime startDate,DateTime endDate,int userID)
+        {
+            Project oneProject=new Project
+            {
+
+                ProjectName = projectName,
+                EndDate = endDate,
+                StartDate = startDate,
+                StatusID = 4
+               
+            };
+            
+
+            try
+            {
+                 Project result = db.Projects.Add(oneProject);
+                
+                db.SaveChanges();
+                oneProject.ProjectMembers.Add(new ProjectMember { ProjectID = result.ProjectID, UserID = userID, RoleID = 2 });
+                db.SaveChanges();
+                return result.ProjectID;
+            }
+            catch
+            {
+                return -1;
+            }
+           
+            
         }
 
     }

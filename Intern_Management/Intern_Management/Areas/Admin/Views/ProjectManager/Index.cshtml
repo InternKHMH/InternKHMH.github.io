@@ -10,6 +10,37 @@
     <script src="~/Asset/js/1.js"></script>
 }
 
+@*form thêm dữ liệu*@
+<div class="dongthemproject">
+
+
+    <fieldset class="form-group">
+        <label for="formGroupExampleInput">Project Name</label>
+        <input type="text" class="form-control projectnameadd" placeholder="Enter Project Name">
+    </fieldset>
+
+
+    <fieldset class="form-group">
+        <label for="formGroupExampleInput2">Start Date</label>
+        <input type="date" class="form-control startdateadd">
+    </fieldset>
+
+
+
+    <fieldset class="form-group">
+        <label for="formGroupExampleInput3">End Date</label>
+        <input type="date" class="form-control enddateadd">
+    </fieldset>
+
+
+
+    <span class="nutsaveadd btn btn-outline-success"><i class="fa fa-save"></i></span>
+    <span class="nutcanceladd btn btn-outline-danger"><i class="fa fa-times"></i></span>
+    <span class="thongbaoloi"></span>
+</div>
+@*kết thúc dòng thêm dữ liệu*@
+
+
 <div class="container">
     <div class="row tk_number_project">
         <div class="col-xs-3 godown">
@@ -32,7 +63,7 @@
             <h3 class="titleProject">List Project</h3>
             <div class="btn btn-outline-success nutthemproject">Add Project </div>
             <input type="text" class="form-control"  aria-describedby="helpId" placeholder="Seach Project">
-            <table class="table">
+            <table class="table tddsproject">
                 <thead>
                     <tr>
                         <th>Project Name</th>
@@ -55,42 +86,15 @@
                                 <td>@item.EndDate</td>
                                 
                                 <td>@ViewBag.StatusName[item.StatusID]</td>
-                                <td><i class="fa fa-times-circle"></i>|	</td>
+                                <td><i class="fa fa-times-circle"></i>	</td>
                             </tr>
                         }
                     }
 
-                    @*form thêm dữ liệu*@
-                    <tr class="dongthemproject">
-
-                        <td>
-                            <fieldset class="form-group">
-                                <label for="formGroupExampleInput">Project Name</label>
-                                <input type="text" class="form-control projectnameadd" placeholder="Enter Project Name">
-                            </fieldset>
-                        </td>
-                        <td>
-                            <fieldset class="form-group">
-                                <label for="formGroupExampleInput2">Start Date</label>
-                                <input type="date" class="form-control startdateadd">
-                            </fieldset>
-
-                        </td>
-                        <td>
-                            <fieldset class="form-group">
-                                <label for="formGroupExampleInput3">End Date</label>
-                                <input type="date" class="form-control enddateadd">
-                            </fieldset>
-
-                        </td>
-
-                        <td><span class="nutsaveadd btn btn-outline-success"><i class="fa fa-save"></i></span> </td>
-                        <td><span class="nutcanceladd btn btn-outline-danger"><i class="fa fa-times"></i></span></td>
-                        <td></td>
-                    </tr>
-                    @*kết thúc dòng thêm dữ liệu*@
+                  
                 </tbody>
             </table>
+          
         </div>
     </div> 
     <!-- end row project  -->

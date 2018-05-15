@@ -12,7 +12,7 @@ namespace Model.EF
         public Project()
         {
             Features = new HashSet<Feature>();
-            Users = new HashSet<User>();
+            ProjectMembers = new HashSet<ProjectMember>();
         }
 
         public int ProjectID { get; set; }
@@ -35,9 +35,9 @@ namespace Model.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feature> Features { get; set; }
 
-        public virtual StatusCheck StatusCheck { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<ProjectMember> ProjectMembers { get; set; }
+
+        public virtual StatusCheck StatusCheck { get; set; }
     }
 }

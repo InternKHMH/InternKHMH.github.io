@@ -4,7 +4,7 @@
 
 
 
-.dongthemproject td fieldset label {
+.dongthemproject  fieldset label {
     color: green;
 }
 
@@ -159,7 +159,7 @@ i.ngay:before {
 .container.hienlen {
     transition:0.5s;
     animation: hienlen 1s forwards;
-    overflow: auto;
+    /* overflow: auto; */
 }
 @-webkit-keyframes hienlen {
     0%{opacity:0;visibility: hidden;transform: translateZ(-100px) scale(0.5); }
@@ -424,27 +424,59 @@ css cho footer */
 
 *{margin: 0; padding: 0;}
 
+.tddsproject .danhsachproject tr:hover {
+    background-color: #add8e65e;
+}
 
-.danhsachproject tr.dongthemproject {
-    background-color: lightblue;
-    visibility: collapse;
-    transition: 0.4s;
-    animation:khoithemanxuong 1s forwards;
+.tddsproject thead tr {
+    background-color: #8a4e9a;
+    color: white;
+}
 
+.tobangnoidung.mauden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000ba;
+    z-index: 4;
+}
+
+.Project .tddsproject th, .Project .tddsproject td {
+    width: 16.6%;
+    display: inline-block;
+    text-align: center;
 }
 
 
-.danhsachproject tr.dongthemproject.khoithemhienlen{
+ div.dongthemproject {
+    background-color: lightblue;
+    opacity: 0;
+    position: absolute;
+    z-index: 5;
+    top: 389px;
+    left: 30%;
+    padding: 20px 20px;
+    transition: 0.4s;
+    width: 338px;
+    margin-left: -169px;
+    line-height: 5px;
+    animation:khoithemanxuong 1s forwards;
+}
+
+
+ div.dongthemproject.khoithemhienlen{
     animation:khoithemhienlen 1s forwards;
 }
 
 @-webkit-keyframes khoithemhienlen{
-    0%{transform: translateY(-200px);visibility: collapse;}
-    100%{transform: translateY(0px);visibility: visible;}
+    0%{transform: translateY(-200px);visibility: collapse; ;}
+    100%{transform: translateY(0px);visibility: visible; opacity: 1;}
 }
 @-webkit-keyframes khoithemanxuong{
-    0%{transform: translateY(0px) scale(1);visibility: visible;}
-    100%{transform: scale(0.5);visibility: collapse;}
+    0%{transform: translateY(0px) scale(1);visibility: visible;;}
+    100%{transform: scale(0.5);opacity:0 ;visibility: collapse;}
     
 }
 
@@ -576,4 +608,9 @@ h3.titleProject {
     text-align: center;
     display: block;
     font-size: 31px!important;
+}
+
+.dongthemproject .thongbaoloi{
+    color:red;
+
 }

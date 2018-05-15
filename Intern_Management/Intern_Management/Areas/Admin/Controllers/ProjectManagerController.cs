@@ -7,10 +7,13 @@ using Model.Dao;
 using Model.EF;
 using Intern_Management.Common;
 using System.Collections;
+using Intern_Management.Models;
+using Intern_Management.Common;
+
 
 namespace Intern_Management.Areas.Admin.Controllers
 {
-    public class ProjectManagerController : Controller
+    public class ProjectManagerController : BaseController
     {
         // GET: Admin/ProjectManager
         public ActionResult Index()
@@ -60,10 +63,6 @@ namespace Intern_Management.Areas.Admin.Controllers
             {
                 dsmember.Add(item.UserID, item.FullName);
                 List<Feature> ft = new FeatureDao().GetByUserID(item.UserID,ProjectID);
-              
-               
-
-                
                 foreach(var fc in ft)
                 {
                     FeatureMember fm = new FeatureMember();
@@ -73,10 +72,7 @@ namespace Intern_Management.Areas.Admin.Controllers
                     dsFeatureMb.Add(fm);
                 }
             }
-
             //lấy thông tin Feature theo ID member
-           
-
             ArrayList dl = new ArrayList();
             dl.Add(dsmember.ToList()); //dl[0]="danh sách các member"
             dl.Add(ttproject.ProjectName);//dl[1]=tên project
@@ -89,11 +85,16 @@ namespace Intern_Management.Areas.Admin.Controllers
         }
         public JsonResult Add(string ProjectName,DateTime StartDate,DateTime EndDate)
         {
-            ArrayList ds = new ArrayList();
-            ds.Add(ProjectName);
-               ds.Add(StartDate);
-            ds.Add(EndDate);
-            return Json(ds);
+
+            //neu them khong duoc tra ve -1 
+            //neu them duoc tra ve id project vua them
+
+            //truyền thêm một User Id là UserID của manager đăng nhập hệ thống
+            var manager = (User)Session[CommonConstants.USE_SESSISON];
+            ArrayList dl = new ArrayList();
+            dl.Add(new ProjectDao().Add(ProjectName, StartDate, EndDate, manager.UserID));
+            dl.Add(manager.UserName);
+            return Json(dl);
         }
 
 

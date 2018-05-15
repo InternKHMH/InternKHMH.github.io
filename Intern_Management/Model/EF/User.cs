@@ -12,7 +12,7 @@ namespace Model.EF
         public User()
         {
             Features = new HashSet<Feature>();
-            Projects = new HashSet<Project>();
+            ProjectMembers = new HashSet<ProjectMember>();
         }
 
         public int UserID { get; set; }
@@ -26,16 +26,12 @@ namespace Model.EF
         [StringLength(50)]
         public string FullName { get; set; }
 
-        public int? RoleID { get; set; }
-
         public bool? Stat { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feature> Features { get; set; }
 
-        public virtual Role Role { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Project> Projects { get; set; }
+        public virtual ICollection<ProjectMember> ProjectMembers { get; set; }
     }
 }

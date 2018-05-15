@@ -11,7 +11,7 @@ namespace Model.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Role()
         {
-            Users = new HashSet<User>();
+            ProjectMembers = new HashSet<ProjectMember>();
         }
 
         public int RoleID { get; set; }
@@ -20,6 +20,6 @@ namespace Model.EF
         public string RoleName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<ProjectMember> ProjectMembers { get; set; }
     }
 }

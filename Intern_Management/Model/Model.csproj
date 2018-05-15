@@ -58,6 +58,7 @@
     <Compile Include="EF\Feature.cs" />
     <Compile Include="EF\InternDB.cs" />
     <Compile Include="EF\Project.cs" />
+    <Compile Include="EF\ProjectMember.cs" />
     <Compile Include="EF\Role.cs" />
     <Compile Include="EF\StatusCheck.cs" />
     <Compile Include="EF\User.cs" />
