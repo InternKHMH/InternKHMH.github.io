@@ -9,6 +9,7 @@ using Intern_Management.Common;
 using System.Collections;
 using Intern_Management.Models;
 using Intern_Management.Common;
+using Model.Dao;
 
 
 namespace Intern_Management.Areas.Admin.Controllers
@@ -18,8 +19,8 @@ namespace Intern_Management.Areas.Admin.Controllers
         // GET: Admin/ProjectManager
         public ActionResult Index()
         {
-            int ProjectCompleted = 0, ProjectProcessing = 0;
 
+            
             Dictionary<int, string> StatusName = new Dictionary<int, string>();
             List<StatusCheck> listStatus = new StatusDao().GetAll();
 
@@ -27,22 +28,14 @@ namespace Intern_Management.Areas.Admin.Controllers
             {
                 int key = item.StatusID;
                 string value = item.StatusName;
-                if (key == 1)
-                {
-                    ProjectCompleted++;
-                }
-                else
-                    ProjectProcessing++;
-
                 StatusName.Add(key, value);
             }
 
 
             ViewBag.StatusName = StatusName;
-            ViewBag.Completed = ProjectCompleted;
-            ViewBag.Processing = ProjectProcessing;
-
-
+            ViewBag.Completed = (new ProjectDao().CountProjectByStatusID(1));
+            ViewBag.Processing = (new ProjectDao().CountProjectByStatusID(2));
+            ViewBag.ManagerName = ((User)Session[CommonConstants.USE_SESSISON]).FullName;
             ViewBag.DanhSachProject = new ProjectDao().ListAll();
             return View();
         }
@@ -50,12 +43,24 @@ namespace Intern_Management.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult GetInforProject(int ProjectID)
         {
+            var manager = (User)Session[CommonConstants.USE_SESSISON];
             //get information witd ProjectID
             var ttproject = new ProjectDao().GetByID(ProjectID);
             //lay thong tin member
             var dsUser = new UserDao().GetAllUserByProjectID(ProjectID);
-
+            //lay thong tin leader
+            var ttleader = (new ProjectDao().GetLeaderProject(ProjectID));
+            
+            if(ttleader==null)
+            {
+                ttproject.Leadername = "Project " + ttproject.ProjectName + " not exists leader please select below";
+            }
+            else
+            {
+                ttproject.Leadername = ttleader.FullName;
+            }
             Dictionary<int, string> dsmember = new Dictionary<int, string>();
+            
             List<FeatureMember> dsFeatureMb = new List<FeatureMember>();
            
 
@@ -72,6 +77,7 @@ namespace Intern_Management.Areas.Admin.Controllers
                     dsFeatureMb.Add(fm);
                 }
             }
+            dsmember.Remove(manager.UserID);
             //lấy thông tin Feature theo ID member
             ArrayList dl = new ArrayList();
             dl.Add(dsmember.ToList()); //dl[0]="danh sách các member"
@@ -96,7 +102,40 @@ namespace Intern_Management.Areas.Admin.Controllers
             dl.Add(manager.UserName);
             return Json(dl);
         }
+        
+        [HttpPost]
+        public JsonResult Delete(int projectID)
+        {
+            //lay danh sach user trong bang user voi projectID tren
+            List<User> listUser=(new UserDao()).GetAllUserByProjectID(projectID);
 
+            //delete data in table projectmember with projectID
+            ProjectMemberDao pm = new ProjectMemberDao();
+            bool result = pm.DeleteByProjectID(projectID);
+            //xoa cac user trong bang user
+            bool kq = (new UserDao()).Delete(listUser);
+
+            if (result == true && kq == true)
+            {
+                return Json((new ProjectDao()).Delete(projectID));
+            }
+            else
+                return Json(-1);
+            
+            
+        }
+
+
+        /// <summary>
+        /// lay id va fullname cac manager he thong
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public JsonResult GetManager()
+        {
+            var result = (new ProjectDao()).GetManager();
+            return Json(result.ToList());
+        }
 
     }
 

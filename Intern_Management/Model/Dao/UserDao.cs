@@ -30,7 +30,11 @@ namespace Model.Dao
             return query.ToList();
         }
 
-
+        public User GetIsManager(int projectID)
+        {
+            int UserID = (db.ProjectMembers.SingleOrDefault(x => x.ProjectID == projectID && x.RoleID == 2)).UserID;
+            return db.Users.Find(UserID);
+        }
         public User GetByUserName(string usename )
         {
             return db.Users.SingleOrDefault(x => x.UserName == usename);
@@ -56,6 +60,33 @@ namespace Model.Dao
                     if (result.Stat == false) return 0;
                     return 1;
                 }
+            }
+        }
+        public bool Delete(User entity)
+        {
+            try
+            {
+                db.Users.Remove(entity);
+                 db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+           
+        }
+        public bool Delete(List<User> ds)
+        {
+            try
+            {
+                db.Users.RemoveRange(ds);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return true;
             }
         }
 

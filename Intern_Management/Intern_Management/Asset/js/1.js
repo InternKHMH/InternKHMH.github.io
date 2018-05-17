@@ -19,7 +19,7 @@
         $('.DetailProject').addClass('dixuong');
     })
 
-
+//su kien hien thi trang detail project
     $('.linkProject').click(function(event){
 
     	event.preventDefault();
@@ -57,7 +57,7 @@
             
             if(res[4]!=null)
             {
-                var edate=new Date($.parseInt(res[4].slice(6,-2)));
+                var edate=new Date(parseInt(res[4].slice(6,-2)));
                 edate='' + (1 + edate.getMonth()) + '/' + edate.getDate() + '/' + edate.getFullYear();
 
             }  
@@ -72,6 +72,7 @@
             {
 
                 dsmb+='<tr>';
+
                 dsmb+='<td>'+res[0][i].Value+' <i class="fa fa-times"></i></td>';
                 
                 dsmb+='</tr>';
@@ -98,6 +99,7 @@
             }
 
             $('.DetailProject .listfeaturemember').html(motdong);
+            res="";
                                
      	 });
    }) ; 
@@ -119,6 +121,13 @@
       $(' div.dongthemproject').toggleClass('khoithemhienlen');
       $('div.tobangnoidung').addClass('mauden');
                   
+    });
+   
+
+    $('body').on('click','div.tobangnoidung',function(event){
+        $(' div.dongthemproject').toggleClass('khoithemhienlen');
+        $('div.tobangnoidung').removeClass('mauden');
+       
     });
 
     $('span.nutsaveadd.btn.btn-outline-success').click(function(event){
@@ -171,7 +180,7 @@
                             motproject+=' <td>'+startdate+'</td>';
                             motproject+='<td>'+enddate+'</td>';
                             motproject+=' <td>inActive</td>';
-                            motproject+='<td><i class="fa fa-times-circle"></i></td>';
+                            motproject+='<td><i class="fa fa-times-circle nutdeleteproject" data-nutdeleteproject="'+res[0]+'></i></td>';
                             motproject+='</tr>';
 
                             $('.tddsproject .danhsachproject').append(motproject);
@@ -189,12 +198,85 @@
     $('div.dongthemproject').on('click','span.nutcanceladd.btn.btn-outline-danger',function(event){
         $(' div.dongthemproject').toggleClass('khoithemhienlen');
         $('div.tobangnoidung').removeClass('mauden');
-    })
+    });
+
+    //xu ly delete project 
+
+    $('tbody.danhsachproject').on('click','.nutdeleteproject',function(event){
+        //show dialog inf delete project 
+        //get projectid can xoa 
+        var xoagiaodien=$(this).parent().parent();
+        var idprojectdelete =$(this).data("nutdeleteproject");
+      
+         $('.btn.btn-primary.yesdelteproject').click(function(event) {
+             /* Act on the event */
+             //goi mothod Delete trong controller ProjectManager tien hanh xoa
+             $.ajax({
+                 url: '/Admin/ProjectManager/Delete',
+                 type: 'POST',
+                 dataType: 'json',
+                 data: {projectID: idprojectdelete},
+             })
+             .done(function() {
+                 console.log("success");
+             })
+             .fail(function() {
+                 console.log("error");
+             })
+             .always(function(res) {
+                //xoa thanh cong thi ve lai giao dien
+                if(res==-1)
+                {
+
+                }
+                else
+                {
+                    xoagiaodien.remove();
+                }
+               
+             });
+             
+
+         });
+    });
+    // end xu y delete project 
+
+
+
+    //processing when update project 
+
+    $('.fa.fa-pencil.nuteditproject.mr-1').click(function(event) {
+        //load  data to form update 
+        var projectname=$(this).parent().parent().children('.projectnametb').children().html();
+
+        // su dung ajax de lay danh sach manager trong he thong
+        $.ajax({
+            url: '/Admin/ProjectManager/GetManager',
+            type: 'GET',
+            dataType: 'json',
+            data: {},
+        })
+        .done(function() {
+            console.log("success");
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function(res) {
+            console.log(res);
+        });
+        
+        
+        
+    });
+
+
+    //end processing when update project 
 
 
 })  
 
-
+ 
  // success: function (data) {
  //                    var rows = '';
  //                    $.each(data, function (i, item) {

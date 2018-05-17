@@ -29,6 +29,10 @@ namespace Model.Dao
            
         }
 
+        public int CountProjectByStatusID(int statusID)
+        {
+            return db.Projects.Count(x => x.StatusID == statusID);
+        }
         public int Add(string projectName,DateTime startDate,DateTime endDate,int userID)
         {
             Project oneProject=new Project
@@ -40,8 +44,6 @@ namespace Model.Dao
                 StatusID = 4
                
             };
-            
-
             try
             {
                  Project result = db.Projects.Add(oneProject);
@@ -55,8 +57,62 @@ namespace Model.Dao
             {
                 return -1;
             }
+        }
+        public bool Delete(int projectID)
+        {
            
+           
+            Project temp = GetByID(projectID);
+            if(temp==null)
+            {
+                return false;
+            }
+            else
+            {
+                db.Projects.Remove(temp);
+                db.SaveChanges();
+                return true;
+            }
             
+        }
+        /// <summary>
+        /// get infomation leader project with projectID
+        /// </summary>
+        /// <param name="projectID"></param>
+        /// <returns></returns>
+        public User GetLeaderProject(int projectID)
+        {
+            try
+            {
+                int userID = (db.ProjectMembers.SingleOrDefault(
+                    x =>x.ProjectID == projectID && x.RoleID == 3)).UserID;
+                return db.Users.SingleOrDefault(x => x.UserID == userID);
+            }
+            catch
+            {
+                return null;
+            }
+            
+        }
+
+        public Dictionary<int,string> GetManager()
+        {
+            Dictionary<int, string> dsManager = new Dictionary<int, string>();
+            var result = (from dl in db.ProjectMembers
+                          where dl.RoleID == 2
+
+                          select dl).GroupBy(t => t.UserID).Select() ;
+            
+              
+            foreach(var item in result)
+            {
+                int key = item.UserID;
+                string value = (db.Users.Find(key)).FullName;
+                dsManager.Add(key, value);
+            }
+
+            return dsManager;
+    
         }
 
     }
