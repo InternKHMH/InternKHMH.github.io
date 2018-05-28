@@ -50,11 +50,11 @@ a.linhdetail {
     text-decoration:  none;
 }
 
-.tbUser thead {
+.tbuser thead {
     background-color: #a5bbc3;
 }
 
-.tbUser tbody tr:hover {
+.tbuser tbody tr:hover {
     background-color: #0000ff6b;
     color: white;
 }
@@ -108,7 +108,6 @@ a.linhdetail {
 
 	100%{ transform: scale(0.5) translateZ(-100px);}
 	
-
 }
 
 .detailAndi{

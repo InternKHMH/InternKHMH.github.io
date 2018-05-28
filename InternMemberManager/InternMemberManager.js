@@ -1,5 +1,5 @@
-﻿ $(function(){
- 	$('.tbUser tbody tr').click(function(event) {
+ $(function(){
+ 	$('.tbuser tbody tr').click(function(event) {
  		event.preventDefault();
  		$('.detailUser').addClass('detailUserShow');
  		$('.den').addClass('hienthi');
@@ -30,8 +30,6 @@
  		.always(function(res) {
  			console.log("complete");
  			
-
-
  		});
  		
 
