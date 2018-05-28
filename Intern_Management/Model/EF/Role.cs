@@ -12,6 +12,7 @@ namespace Model.EF
         public Role()
         {
             ProjectMembers = new HashSet<ProjectMember>();
+            Users = new HashSet<User>();
         }
 
         public int RoleID { get; set; }
@@ -21,5 +22,8 @@ namespace Model.EF
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProjectMember> ProjectMembers { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

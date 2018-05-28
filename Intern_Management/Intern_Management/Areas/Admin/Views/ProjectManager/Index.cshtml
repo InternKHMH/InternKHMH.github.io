@@ -81,10 +81,10 @@
                         {
                             <tr>
                                 <td scope="row" class="projectnametb"><a href="#" data-idproject="@item.ProjectID" class="linkProject">@item.ProjectName</a></td>
-                                <td class="managernametb">@ViewBag.ManagerName</td> 
+                                <td class="managernametb" data-managerid="@ViewBag.ManagerID">@ViewBag.ManagerName</td> 
                                 @if (item.StartDate != null)
                                 {
-                                    <td class="startdatetb">@(((DateTime)item.StartDate).ToString("dd-MMMM-yyyy"))</td>
+                                    <td class="startdatetb">@(((DateTime)item.StartDate).ToString("yyyy-MM-dd"))</td>
                                 }
                                 else
                                 {
@@ -93,12 +93,12 @@
                                 
                                 @if (item.EndDate != null)
                                 {
-                                    <td class="enddatetb">@(((DateTime)item.EndDate).ToString("dd-MMMM-yyyy"))</td>
+                                    <td class="enddatetb">@(((DateTime)item.EndDate).ToString("yyyy-MM-dd"))</td>
                                    
                                 }
                                 else
                                 {
-                                    <td class="enddatetb">@item.EndDate</td>
+                                    <td class="enddatetb" >@item.EndDate</td>
                                 }
                                 
                                 <td class="statusnametb">@ViewBag.StatusName[item.StatusID]</td>
@@ -147,7 +147,7 @@
 
 @*begin form request user fill infor after update project*@ 
 
-<div class="modal fade divdeleteproject" id="formupdateproject" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade diveditproject" id="formupdateproject" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
 
         <div class="modal-content">
@@ -161,18 +161,16 @@
             <div class="modal-body">
                 <fieldset>
                 <label for="exampleInputEmail1">Project Name</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Project Name">
+                <input type="text" class="form-control projectnameedit" data-projectidedit="10" id="exampleInputEmail1" placeholder="">
 
                 </fieldset>
 
                 <fieldset class="form-group">
                     <label for="manager">Change Manager</label>
                     <select class="form-control" id="manager">
-                        <option>1</option>
-                        <option></o</option>
-                        <option></o</option>
-                        <option></o</option>
-                        <option></o</option>
+                     
+                        
+                        
                     </select>
                 </fieldset>
 
@@ -187,6 +185,7 @@
                 </fieldset>
             </div>
             <div class="modal-footer">
+                <span class="errorupdateproject" style="color:red;">...</span>
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-outline-primary acceptupdate">update</button>
             </div>

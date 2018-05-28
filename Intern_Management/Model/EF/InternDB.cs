@@ -8,7 +8,7 @@ namespace Model.EF
     public partial class InternDB : DbContext
     {
         public InternDB()
-            : base("name=InternDBContext")
+            : base("name=InternDB")
         {
         }
 

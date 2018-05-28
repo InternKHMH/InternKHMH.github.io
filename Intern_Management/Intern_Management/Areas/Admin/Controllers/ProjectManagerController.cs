@@ -33,10 +33,33 @@ namespace Intern_Management.Areas.Admin.Controllers
 
 
             ViewBag.StatusName = StatusName;
-            ViewBag.Completed = (new ProjectDao().CountProjectByStatusID(1));
-            ViewBag.Processing = (new ProjectDao().CountProjectByStatusID(2));
+           
             ViewBag.ManagerName = ((User)Session[CommonConstants.USE_SESSISON]).FullName;
-            ViewBag.DanhSachProject = new ProjectDao().ListAll();
+            ViewBag.ManagerID = ((User)Session[CommonConstants.USE_SESSISON]).UserID;
+            List<Project> dsProject= new ProjectDao().GetListProjectByManager(ViewBag.ManagerID);
+            ViewBag.DanhSachProject = dsProject;
+
+
+
+            //dem so project hoan thanh va chua hoan thanh
+            int projectHoanThanh = 0, projectProcessing = 0, projectInActive = 0;
+            foreach(var item in dsProject)
+            {
+                if(item.StatusID==1)
+                {
+                    projectHoanThanh++;
+                    
+                }
+                if (item.StatusID == 2)
+                    projectProcessing++;
+                if (item.StatusID == 4)
+                    projectInActive++;
+
+            }
+
+            ViewBag.Completed = projectHoanThanh; ////(new ProjectDao().CountProjectByStatusID(1));
+            ViewBag.Processing = projectProcessing;
+            ViewBag.InActive = projectInActive;
             return View();
         }
 
@@ -134,7 +157,22 @@ namespace Intern_Management.Areas.Admin.Controllers
         public JsonResult GetManager()
         {
             var result = (new ProjectDao()).GetManager();
-            return Json(result.ToList());
+            ArrayList dl = new ArrayList();
+            dl.Add(result.ToList());
+            return Json(dl,JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Update(string projectName,int newManagerID,DateTime startDate,DateTime endDate, int projectID)
+        {
+            var manager = (User)Session[CommonConstants.USE_SESSISON];
+            ProjectDao dao = new ProjectDao();
+            Project pr = new Project();
+            pr.ProjectName = projectName;
+            pr.StartDate = startDate;
+            pr.EndDate = endDate;
+            pr.ProjectID = projectID;
+            int result = dao.Update(pr, newManagerID, manager.UserID);
+            return Json(result);
         }
 
     }

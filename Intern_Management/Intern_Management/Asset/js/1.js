@@ -1,8 +1,10 @@
  $(function(){
    
- 	var totalProject =$(".total").data("total")*20;
- 	var completedProject=$(" span.completed").data("completed")*20;
- 	var ProcessingProject=$("span.processing").data("processing")*20;
+ 	var totalProject =$(".total").data("total")*20,
+        completedProject=$(" span.completed").data("completed")*20,
+ 	    ProcessingProject=$("span.processing").data("processing")*20,
+        ManagerName="";
+
 
  	$("span.total").width(totalProject);
  	$("span.completed").width(completedProject);
@@ -241,14 +243,19 @@
     });
     // end xu y delete project 
 
-
-
     //processing when update project 
-
+    var managerID="";
     $('.fa.fa-pencil.nuteditproject.mr-1').click(function(event) {
         //load  data to form update 
+        
         var projectname=$(this).parent().parent().children('.projectnametb').children().html();
+        var startdate=$(this).parent().parent().children('.startdatetb').html();
+        var enddate=$(this).parent().parent().children('.enddatetb').html();
+        var olmanagerid=$(this).parent().parent().children('.managernametb').data('managerid'),
+       
+        projectid=$(this).parent().parent().children('.projectnametb').children('.linkProject').data('idproject');
 
+        managerID=olmanagerid;
         // su dung ajax de lay danh sach manager trong he thong
         $.ajax({
             url: '/Admin/ProjectManager/GetManager',
@@ -263,17 +270,162 @@
             console.log("error");
         })
         .always(function(res) {
-            console.log(res);
+            
+            //gan du lieu cu len form nhap du lieu edit
+             // lay du lieu danh sach cac manager
+            var dsmanager='';
+            //var olmanagerid=$('.managernametb').data('managerid');
+          
+            for(var i=0;i<res[0].length;i++)
+            {
+                if(olmanagerid==res[0][i].Key)
+                {
+                    ManagerName=res[0][i].Value;
+                    dsmanager+='<option data-managerid="'+res[0][i].Key+'" selected>'+res[0][i].Value+'</option>';
+                }
+                else
+                dsmanager+='<option data-managerid="'+res[0][i].Key+'">'+res[0][i].Value+'</option>';
+            }
+            $('.diveditproject select#manager').html(dsmanager);
+
+            $('.projectnameedit').attr("placeholder",projectname);
+
+            $(' .diveditproject .projectnameedit').attr('data-projectidedit',projectid);
+ 
+
+           if(startdate!=null||startdate!="")
+           {
+            $('#updatestartdate').val(startdate);
+           }
+            
+            if(enddate!=null||enddate!="")
+            {
+                $("#updateenddate").val(enddate);
+                 
+            }
+
+
+            //xong viec gan du lieu cu
+        
         });
-        
-        
         
     });
 
 
+
+    //khi click vao nut update du lieu project
+ 
+
+    $('body').on('change','.diveditproject #manager',function(event){
+        var selected=$(this).find('option:selected');
+        managerID=selected.data('managerid');
+
+    });
+
+    $('body').on('click','.diveditproject .acceptupdate',function(event){
+
+        //lay cac truong du lieu
+        var projectNameOld=$('.diveditproject .projectnameedit').attr('placeholder'),
+            startDate=$('.diveditproject #updatestartdate').val(),
+            endDate=$('.diveditproject #updateenddate').val(),
+            managerName=$('.diveditproject #manager').val(),
+            projecteditid=$('.diveditproject input.projectnameedit').data('projectidedit'),
+            projectNameNew=$('.diveditproject .projectnameedit').val();
+        
+
+        $('.diveditproject .errorupdateproject').html('');
+          
+
+        //kiem tra du lieu trong 
+        if(projectNameNew=="")
+        {
+            projectNameNew=projectNameOld;
+        }
+        if(endDate=="" || startDate=="")
+        {
+              $('.diveditproject .errorupdateproject').html('You must enter EndDate  and StartDate!');
+              return false;
+        }
+        else 
+        {
+            if(endDate<startDate)
+            {
+                //hien thong bao loi va yeu cau nhap lai
+                $('.diveditproject .errorupdateproject').html('You must enter EndDate > StartDate!');
+                return false;
+
+            }
+        }
+
+        //update du lieu
+        $.ajax({
+            url: '/Admin/ProjectManager/Update',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                projectName: projectNameNew,
+                newManagerID:managerID,
+                startDate:startDate,
+                endDate:endDate,
+                projectID:projecteditid
+            },
+        })
+        .done(function() {
+            console.log("success");
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function(res) {
+            console.log("complete");
+            
+
+
+            $('.modal.fade.diveditproject').removeClass('in');
+            $('.modal.fade.diveditproject').css('display','none');
+            $('.modal.fade.diveditproject').attr('aria-hidden','true');
+            $('body').removeClass('modal-open');
+            $('body').css('padding-right','0px');
+        
+
+            $('.modal-backdrop.fade.in').remove();
+
+
+        });
+        
+
+
+
+
+
+        if(managerName!=ManagerName)//neu manager thay doi thi khi back project manager page
+                                     // phai xoa du project do trong list
+        {
+
+          
+            // xoa dong tren giao dien
+        }
+
+        else
+        {
+          
+            //update lai du lieu va ve lai giao dien
+
+
+
+        }
+        
+
+            
+    });
+
+    function doingay(ngay)
+    {
+            var edate=new Date(parseInt(ngay.slice(6,-2)));
+            edate='' + (1 + edate.getMonth()) + '-' + edate.getDate() + '-' + edate.getFullYear();
+            return edate;
+    }
     //end processing when update project 
-
-
 })  
 
  

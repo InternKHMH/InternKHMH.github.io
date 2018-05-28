@@ -38,6 +38,31 @@ namespace Model.Dao
                          select pl;
             return result.ToList();
         }
+
+        public int UpdateManager(int oldManagerID,int newManagerID,int projectID)
+        {
+            try
+            {
+                var result = db.ProjectMembers.SingleOrDefault(x => x.ProjectID == projectID && x.UserID == oldManagerID && x.RoleID==2) ;
+                if(result==null)//neu chua co thi them 
+                {
+                    db.ProjectMembers.Add(new ProjectMember() { ProjectID = projectID, UserID = newManagerID, RoleID = 2 });
+                    db.SaveChanges();
+                }
+                else //co roi thi cap nhat lai
+                {
+                     result.UserID = newManagerID;
+                      db.SaveChanges();
+                }
+              
+                return 1;
+            }
+            catch
+            {
+                return 0;
+            }
+          
+        }
         
     }
 }
