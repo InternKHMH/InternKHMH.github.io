@@ -63,6 +63,48 @@ namespace Model.Dao
             }
           
         }
-        
+
+        public int AssignScrumMaster(int? projectID, int? scrumMasterID)
+        {
+            // buoc 1: dua scrum master cu tro lai thanh member 
+            //tim project bang id project va co role =3 update lai  thanh role 4
+            var result = from c in db.ProjectMembers
+                         where c.ProjectID == projectID && c.RoleID == 3
+                         select c;
+            if (result.ToList<ProjectMember>().Count == 0)
+            {
+                ProjectMember uppr = db.ProjectMembers.SingleOrDefault(x => x.ProjectID == projectID && x.UserID == scrumMasterID);
+                if (uppr == null) return 0;
+                else
+                {
+                    uppr.RoleID = 3;
+                    db.SaveChanges();
+                    return 1;
+
+                }
+            }
+            else
+            {
+                foreach (ProjectMember item in result.ToList<ProjectMember>())
+                {
+                    item.RoleID = 4;
+                    db.SaveChanges();
+                }
+
+                ProjectMember uppr = db.ProjectMembers.SingleOrDefault(x => x.ProjectID == projectID && x.UserID == scrumMasterID);
+                if (uppr == null) return 0;
+                else
+                {
+                    uppr.RoleID = 3;
+                    db.SaveChanges();
+                    return 1;
+
+                }
+
+            }
+
+
+        }
+
     }
 }

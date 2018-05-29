@@ -9,195 +9,192 @@
 
     <script src="~/Asset/js/1.js"></script>
 }
-
-@*form thêm dữ liệu*@
-<div class="dongthemproject">
-
-
-    <fieldset class="form-group">
-        <label for="formGroupExampleInput">Project Name</label>
-        <input type="text" class="form-control projectnameadd" placeholder="Enter Project Name">
-    </fieldset>
+<div class="toanbonoidungtrang">
+    @*form thêm dữ liệu*@
+    <div class="dongthemproject">
 
 
-    <fieldset class="form-group">
-        <label for="formGroupExampleInput2">Start Date</label>
-        <input type="date" class="form-control startdateadd">
-    </fieldset>
+        <fieldset class="form-group">
+            <label for="formGroupExampleInput">Project Name</label>
+            <input type="text" class="form-control projectnameadd" placeholder="Enter Project Name">
+        </fieldset>
 
 
-
-    <fieldset class="form-group">
-        <label for="formGroupExampleInput3">End Date</label>
-        <input type="date" class="form-control enddateadd">
-    </fieldset>
+        <fieldset class="form-group">
+            <label for="formGroupExampleInput2">Start Date</label>
+            <input type="date" class="form-control startdateadd">
+        </fieldset>
 
 
 
-    <span class="nutsaveadd btn btn-outline-success"><i class="fa fa-save"></i></span>
-    <span class="nutcanceladd btn btn-outline-danger"><i class="fa fa-times"></i></span>
-    <span class="thongbaoloi"></span>
-</div>
-@*kết thúc dòng thêm dữ liệu*@
+        <fieldset class="form-group">
+            <label for="formGroupExampleInput3">End Date</label>
+            <input type="date" class="form-control enddateadd">
+        </fieldset>
 
 
-<div class="container">
-    <div class="row tk_number_project">
-        <div class="col-xs-3 godown">
-            <h3 class="numberproject">Total number project: </h3>
-            <h3 class="numberinter completed">Project Completed: </h3>
-            <h3 class="numberinter processing">Project Processing:</h3>
-        </div>
-        <div class="col-xs-9 godown">
-            <span class="total" data-total=@ListProject.Count()>@ListProject.Count()</span>
-            <span class="completed" data-completed=@ViewBag.Completed>@ViewBag.Completed</span>
-            <span class="processing" data-processing=@ViewBag.Processing>@ViewBag.Processing</span>
-        </div>
+
+        <span class="nutsaveadd btn btn-outline-success"><i class="fa fa-save"></i></span>
+        <span class="nutcanceladd btn btn-outline-danger"><i class="fa fa-times"></i></span>
+        <span class="thongbaoloi"></span>
     </div>
+    @*kết thúc dòng thêm dữ liệu*@
 
-    
-    <div class="row Project">
-        
-        <div class="col-sm-12">
-           
-            <h3 class="titleProject">List Project</h3>
-            <div class="btn btn-outline-success nutthemproject">Add Project </div>
-            <input type="text" class="form-control"  aria-describedby="helpId" placeholder="Seach Project">
-            <table class="table tddsproject">
-                <thead>
-                    <tr>
-                        <th>Project Name</th>
-                        <th>Manager</th>
-                        <th>Start date</th>
-                        <th>End date</th>
-                        <th>Status</th>
-                        <th><i class="fa fa-bolt"></i></th>
-                    </tr>
-                </thead>
-                <tbody class="danhsachproject">
-                    @if(ListProject!=null)
+
+    <div class="container">
+        <div class="row tk_number_project">
+            <div class="col-xs-3 godown">
+                <h3 class="numberproject">Total number project: </h3>
+                <h3 class="numberinter completed">Project Completed: </h3>
+                <h3 class="numberinter processing">Project Processing:</h3>
+            </div>
+            <div class="col-xs-9 godown">
+                <span class="total" data-total=@ListProject.Count()>@ListProject.Count()</span>
+                <span class="completed" data-completed=@ViewBag.Completed>@ViewBag.Completed</span>
+                <span class="processing" data-processing=@ViewBag.Processing>@ViewBag.Processing</span>
+            </div>
+        </div>
+
+
+        <div class="row Project">
+
+            <div class="col-sm-12">
+
+                <h3 class="titleProject">List Project</h3>
+                <div class="btn btn-outline-success nutthemproject">Add Project </div>
+                <input type="text" class="form-control" aria-describedby="helpId" placeholder="Seach Project">
+                <table class="table tddsproject">
+                    <thead>
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Manager</th>
+                            <th>Start date</th>
+                            <th>End date</th>
+                            <th>Status</th>
+                            <th><i class="fa fa-bolt"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody class="danhsachproject">
+                        @if(ListProject!=null)
                     {
                          foreach (var item in ListProject)
                         {
-                            <tr>
-                                <td scope="row" class="projectnametb"><a href="#" data-idproject="@item.ProjectID" class="linkProject">@item.ProjectName</a></td>
-                                <td class="managernametb" data-managerid="@ViewBag.ManagerID">@ViewBag.ManagerName</td> 
-                                @if (item.StartDate != null)
+                                <tr>
+                                    <td scope="row" class="projectnametb"><a href="#" data-idproject="@item.ProjectID" class="linkProject">@item.ProjectName</a></td>
+                                    <td class="managernametb" data-managerid="@ViewBag.ManagerID">@ViewBag.ManagerName</td>
+                                    @if (item.StartDate != null)
                                 {
-                                    <td class="startdatetb">@(((DateTime)item.StartDate).ToString("yyyy-MM-dd"))</td>
+                                        <td class="startdatetb">@(((DateTime)item.StartDate).ToString("yyyy-MM-dd"))</td>
                                 }
                                 else
                                 {
-                                    <td class="startdatetb">@item.StartDate</td>
+                                        <td class="startdatetb">@item.StartDate</td>
                                 }
-                                
-                                @if (item.EndDate != null)
+
+                                    @if (item.EndDate != null)
                                 {
-                                    <td class="enddatetb">@(((DateTime)item.EndDate).ToString("yyyy-MM-dd"))</td>
-                                   
+                                        <td class="enddatetb">@(((DateTime)item.EndDate).ToString("yyyy-MM-dd"))</td>
+
                                 }
                                 else
                                 {
-                                    <td class="enddatetb" >@item.EndDate</td>
+                                        <td class="enddatetb">@item.EndDate</td>
                                 }
-                                
-                                <td class="statusnametb">@ViewBag.StatusName[item.StatusID]</td>
-                                <td>
-                                    <i class="fa fa-pencil nuteditproject mr-1" data-nuteditproject="@item.ProjectID" data-toggle="modal" data-target="#formupdateproject"></i>
-                                    <i class="fa fa-times-circle nutdeleteproject" data-toggle="modal" data-target="#exampleModalCenter" data-nutdeleteproject="@item.ProjectID"></i>
-                                	
-                                </td>
-                            </tr>
+
+                                    <td class="statusnametb">@ViewBag.StatusName[item.StatusID]</td>
+                                    <td>
+                                        <i class="fa fa-pencil nuteditproject mr-1" data-nuteditproject="@item.ProjectID" data-toggle="modal" data-target="#formupdateproject"></i>
+                                        <i class="fa fa-times-circle nutdeleteproject" data-toggle="modal" data-target="#exampleModalCenter" data-nutdeleteproject="@item.ProjectID"></i>
+
+                                    </td>
+                                </tr>
                         }
-                    } 
-                </tbody>
-            </table>
-          
-        </div>
-    </div> 
-    <!-- end row project  -->
-</div> @*end container project*@
+                    }
+                    </tbody>
+                </table>
 
-
-@*phan thong bao khi click xoa project*@ 
-
-<div class="modal fade divdeleteproject" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Delete confirmation</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">$Project manager</span>
-                </button>
-            </div>
-            <div class="modal-body">
-             Make sure if you want to delete this project ?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary yesdelteproject">Yes</button>
             </div>
         </div>
-    </div>
-</div>
+        <!-- end row project  -->
+    </div> @*end container project*@
 
-@*end phan thong bao khi click xoa project*@ 
 
-@*begin form request user fill infor after update project*@ 
+    @*phan thong bao khi click xoa project*@
 
-<div class="modal fade diveditproject" id="formupdateproject" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal fade divdeleteproject" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
 
-        <div class="modal-content">
+            <div class="modal-content">
 
-            <div class="modal-header">
-                <h4 class="modal-title">Update Project</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">$Project manager</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <fieldset>
-                <label for="exampleInputEmail1">Project Name</label>
-                <input type="text" class="form-control projectnameedit" data-projectidedit="10" id="exampleInputEmail1" placeholder="">
-
-                </fieldset>
-
-                <fieldset class="form-group">
-                    <label for="manager">Change Manager</label>
-                    <select class="form-control" id="manager">
-                     
-                        
-                        
-                    </select>
-                </fieldset>
-
-                <fieldset class="form-group">
-                    <label for="updatestartdate">Start Date</label>
-                    <input type="date" class="form-control" id="updatestartdate">
-
-                </fieldset>
-                <fieldset class="form-group">
-                    <label for="updateenddate">End Date</label>
-                    <input type="date" class="form-control" id="updateenddate">
-                </fieldset>
-            </div>
-            <div class="modal-footer">
-                <span class="errorupdateproject" style="color:red;">...</span>
-                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-outline-primary acceptupdate">update</button>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Delete confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">$Project manager</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Make sure if you want to delete this project ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary yesdelteproject">Yes</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-@*end form resquest user fill infor to to update*@
+    @*end phan thong bao khi click xoa project*@
+
+    @*begin form request user fill infor after update project*@
+
+    <div class="modal fade diveditproject" id="formupdateproject" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Project</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">$Project manager</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <fieldset>
+                        <label for="exampleInputEmail1">Project Name</label>
+                        <input type="text" class="form-control projectnameedit" data-projectidedit="10" id="exampleInputEmail1" placeholder="">
+
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label for="manager">Change Manager</label>
+                        <select class="form-control" id="manager"></select>
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label for="updatestartdate">Start Date</label>
+                        <input type="date" class="form-control" id="updatestartdate">
+
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="updateenddate">End Date</label>
+                        <input type="date" class="form-control" id="updateenddate">
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <span class="errorupdateproject" style="color:red;">...</span>
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-outline-primary acceptupdate">update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*end form resquest user fill infor to to update*@
 
 
-    <div class="container DetailProject "> @*begin container DetailProject*@
-         <i class="fa fa-chevron-up nutdilen"></i>
+    <div class="container DetailProject ">
+        @*begin container DetailProject*@
+        <i class="fa fa-chevron-up nutdilen"></i>
         <div class="nutBackDashboard btn btn-danger float-right">X</div>
         <div class="row mt-2">
             <div class="col-sm-12">
@@ -221,9 +218,7 @@
             <div class="col-sm-4">
                 <table class="table memberlist">
 
-                    <tbody class="lstmember"> 
-                        
-                    </tbody>
+                    <tbody class="lstmember"></tbody>
                 </table>
             </div>
         </div>
@@ -240,16 +235,80 @@
                         <th>Member</th>
                         <th>Duration</th>
                         <th>Status</th>
-                        <th></th>
+                        @*<th></th>*@
                     </tr>
                 </thead>
-                <tbody class="listfeaturemember">
-                </tbody>
+                <tbody class="listfeaturemember"></tbody>
             </table>
         </div>
 
     </div> @*end container DetailProject*@
 
+    @*phan detailFeature*@
+    <div class="DetailFeature">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-10 offset-xs-1"><img src="#" alt="cover images" /></div>
+            </div>
 
+            <div class="row">
+                <div class="col-xs-8 offset-xs-1">
+                    <h3 class="titleFeature">view detail project</h3>
+                    <div class="groupFeature">in group: <a href="#">BackLog</a></div>
+                    <div><small class="memberfeature mr-2">Member</small> <small>Due Date</small></div>
+                    <div><small class="memberfeature mr-2">Khanh</small> <small class="dueDateFeature">End Date feature</small></div>
+                    <h3 class="descriptionFeature mt-2">Description</h3>
+                    <div class="noidungdescription">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+ 	                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+ 	                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+ 	                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+ 	                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+ 	                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
+                    <h3 class="mt-2">Attachments</h3>
+                    <div class="images">
+                        <div class="row motkhoianh"> @*mot khoi anh*@
+                            <div class="col-xs-5">anh day</div>
+                            <div class="col-xs-7">
+                               <div><h4 class="tenanh">DetailProjectScrumMaster</h4></div> 
+                               <div>Added:<span class="dateaddimage mr-1">May 21 at 2:43 pm</span>
+                                   <a href="#" class="mr-1">-Comment</a>
+                                   <a href="#">-Delete</a>
+                                </div>
+                                <a href="#">Remove cover</a>
+                            </div>
+                        </div> @*het mot khoi anh*@
+                    </div>
+                    <div><a href="#">Add an Attachment</a></div>
 
+                    <h3 class="mt-2">Add Comment</h3>
+
+                    <textarea placeholder="Write a comment..." style="width:100%;height:140px; "></textarea>
+                    <div disabled class="btn btn-outline-secondary">Save</div>
+
+                </div>
+                <div class="col-xs-2 mt-4">
+                    <div><h3>Add</h3></div>
+                    <div><h5 class="btn btn-outline-success btn-block">Member</h5></div>
+                    <div><h5 class="btn btn-outline-success btn-block">Labels</h5></div>
+                    <div><h5 class="btn btn-outline-success btn-block">Checklist</h5></div>
+                    <div><h5 class="btn btn-outline-success btn-block">Due Date</h5></div>
+                    <div><h5 class="btn btn-outline-success btn-block">Attachment</h5></div>
+
+                    <div><h3 class="mt-1 mb-1">Actions</h3></div>
+
+                    <div><h5 class="btn btn-outline-success btn-block">Move</h5></div>
+                    <div><h5 class="btn btn-outline-success btn-block">Copy</h5></div>
+                    <div><h5 class="btn btn-outline-success btn-block">Watch</h5></div>
+                    <div><h5 class="btn btn-outline-success btn-block">Archive</h5></div>
+                    
+                </div>
+            </div>
+        </div>
+       
+    </div> 
+    @*end DetailFeature*@
+
+</div>
 

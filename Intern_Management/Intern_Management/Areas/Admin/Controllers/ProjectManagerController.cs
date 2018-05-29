@@ -175,9 +175,11 @@ namespace Intern_Management.Areas.Admin.Controllers
             return Json(result);
         }
 
+        public JsonResult AssignScrumMaster(int? projectID,int userID)
+        {
+            return Json((new ProjectMemberDao()).AssignScrumMaster(projectID, userID));
+        }
+
     }
-
-   
-
     
 }

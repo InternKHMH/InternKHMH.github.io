@@ -22,13 +22,16 @@
     })
 
 //su kien hien thi trang detail project
+    var projectIDClickLink=null;
     $('.linkProject').click(function(event){
 
     	event.preventDefault();
+        projectIDClickLink=null;
         //cho trang daitail luôn scroll lên trên
         $(".DetailProject,html, body").animate({ scrollTop: 0 }, "slow");
 
     	var IdProject = $(this).data("idproject");
+        projectIDClickLink=IdProject;
      	 $.ajax({
      	 	url: '/Admin/ProjectManager/GetInforProject',
      	 	type: 'GET',
@@ -43,10 +46,8 @@
      	 })
      	 .always(function(res) {
      	    
-             // console.log(res.dsuser);
-            
             $('.DetailProject .projectName').html('Project Name: '+res[1]);
-            $('.DetailProject .teamLeader').html('Team Leader: '+res[2]);
+            $('.DetailProject .teamLeader').html('Scrum Master: '+res[2]);
              
               // var edate = new Date(parseInt(res[4].substr(6)));
 
@@ -75,11 +76,12 @@
 
                 dsmb+='<tr>';
 
-                dsmb+='<td>'+res[0][i].Value+' <i class="fa fa-times"></i></td>';
+                dsmb+='<td data-iduser='+res[0][i].Key+'>'+res[0][i].Value+'</td>';//<i class="fa fa-times"></i> bo giua
                 
                 dsmb+='</tr>';
         
             }
+            
 
             $('.DetailProject .memberlist .lstmember').html(dsmb);
             
@@ -95,7 +97,7 @@
                 motdong+=' <td>'+res[5][k].FeatureOwer+'</td>';
                 motdong+=' <td>'+res[5][k].FeatureDuration+'</td>';
                 motdong+=' <td>'+res[5][k].FeatureStatus+'</td>';
-                motdong+='<td>  <i class="fa fa-edit"></i>  <i class="fa fa-times"></i></td>';
+                // motdong+='<td>  <i class="fa fa-edit"></i>  <i class="fa fa-times"></i></td>';
                 motdong+=' </tr>';
              
             }
@@ -132,7 +134,7 @@
        
     });
 
-    $('span.nutsaveadd.btn.btn-outline-success').click(function(event){
+    $('body').on('click','span.nutsaveadd.btn.btn-outline-success',function(event){
        
 
         var prname=$('.dongthemproject .projectnameadd').val();
@@ -182,7 +184,11 @@
                             motproject+=' <td>'+startdate+'</td>';
                             motproject+='<td>'+enddate+'</td>';
                             motproject+=' <td>inActive</td>';
-                            motproject+='<td><i class="fa fa-times-circle nutdeleteproject" data-nutdeleteproject="'+res[0]+'></i></td>';
+                            motproject+='<td>';
+                            motproject+='<i class="fa fa-pencil nuteditproject mr-1" data-nuteditproject="'+res[0]+'" data-toggle="modal" data-target="#formupdateproject"></i>';
+                            motproject+=' <i class="fa fa-times-circle nutdeleteproject" data-toggle="modal" data-target="#exampleModalCenter" data-nutdeleteproject="'+res[0]+'"></i>';
+                            motproject+=' </td>';
+                           // motproject+='<td><i class="fa fa-times-circle nutdeleteproject" data-nutdeleteproject="'+res[0]+'></i></td>';
                             motproject+='</tr>';
 
                             $('.tddsproject .danhsachproject').append(motproject);
@@ -196,6 +202,11 @@
         }
 
     });/* end nutsave*/
+      
+                                    
+                                   
+                                    
+                               
 
     $('div.dongthemproject').on('click','span.nutcanceladd.btn.btn-outline-danger',function(event){
         $(' div.dongthemproject').toggleClass('khoithemhienlen');
@@ -234,6 +245,13 @@
                 else
                 {
                     xoagiaodien.remove();
+                     $('.modal.fade.divdeleteproject ').removeClass('in');
+                     $('.modal.fade.divdeleteproject ').css('display','none');
+                    $('.modal.fade.divdeleteproject').attr('aria-hidden','true');
+                     $('body').removeClass('modal-open');
+                    // $('body').css('padding-right','0px');
+                     $('.modal-backdrop.fade.in').remove();
+
                 }
                
              });
@@ -245,15 +263,18 @@
 
     //processing when update project 
     var managerID="";
-    $('.fa.fa-pencil.nuteditproject.mr-1').click(function(event) {
+    var dongDuocChonEdit=null,startusName="";
+
+    $('body').on('click','.fa.fa-pencil.nuteditproject.mr-1',function(event) {
         //load  data to form update 
-        
+        dongDuocChonEdit=null;startusName="";
+        dongDuocChonEdit=$(this).parent().parent();
         var projectname=$(this).parent().parent().children('.projectnametb').children().html();
         var startdate=$(this).parent().parent().children('.startdatetb').html();
         var enddate=$(this).parent().parent().children('.enddatetb').html();
         var olmanagerid=$(this).parent().parent().children('.managernametb').data('managerid'),
-       
         projectid=$(this).parent().parent().children('.projectnametb').children('.linkProject').data('idproject');
+        startusName=$(this).parent().parent().children('.statusnametb').html();
 
         managerID=olmanagerid;
         // su dung ajax de lay danh sach manager trong he thong
@@ -311,11 +332,7 @@
         
     });
 
-
-
     //khi click vao nut update du lieu project
- 
-
     $('body').on('change','.diveditproject #manager',function(event){
         var selected=$(this).find('option:selected');
         managerID=selected.data('managerid');
@@ -378,46 +395,100 @@
         })
         .always(function(res) {
             console.log("complete");
-            
-
 
             $('.modal.fade.diveditproject').removeClass('in');
             $('.modal.fade.diveditproject').css('display','none');
             $('.modal.fade.diveditproject').attr('aria-hidden','true');
             $('body').removeClass('modal-open');
             $('body').css('padding-right','0px');
-        
-
             $('.modal-backdrop.fade.in').remove();
 
+            if(managerName!=ManagerName)//neu manager thay doi thi khi back project manager page
+                                         // phai xoa du project do trong list
+            {
+
+                // xoa dong tren giao dien
+                dongDuocChonEdit.remove();
+            }
+
+            else
+            {
+              
+                //update lai du lieu va ve lai giao dien
+                var dulieu='';
+                dulieu+='<td scope="row" class="projectnametb"><a href="#" data-idproject="'+projecteditid+'" class="linkProject">'+projectNameNew+'</a></td>';
+                dulieu+='<td class="managernametb" data-managerid="5">'+managerName+'</td>';
+                dulieu+=' <td class="startdatetb">'+startDate+'</td>';
+                dulieu+='<td class="enddatetb">'+endDate+'</td>';
+                dulieu+=' <td class="statusnametb">'+startusName+'</td>';
+                dulieu+='<td>';
+                dulieu+=' <i class="fa fa-pencil nuteditproject mr-1" data-nuteditproject="'+projecteditid+'" data-toggle="modal" data-target="#formupdateproject"></i>';
+                dulieu+=' <i class="fa fa-times-circle nutdeleteproject" data-toggle="modal" data-target="#exampleModalCenter" data-nutdeleteproject="'+projecteditid+'"></i>';
+                dulieu+=' </td>'; 
+
+                dongDuocChonEdit.html(dulieu);                   
+
+            }
+
+        });
+       
+    });
+
+    //end processing when update project 
+
+
+
+///////////////////////////////////xu ly su kien tren trang detail project ////////////////////////////
+    
+    //assign Scrum master
+
+    $('body').on('click','.DetailProject .table.memberlist .lstmember tr td',function(event){
+
+        var projectID=projectIDClickLink,
+            scrumMasterID=$(this).data('iduser'),
+            fullNameScrumMaster=$(this).html();
+
+
+        $.ajax({
+            url: '/Admin/ProjectManager/AssignScrumMaster',
+            type: 'POST',
+            dataType: 'json',
+            data: {projectID: projectID,userID:scrumMasterID},
+        })
+        .done(function() {
+            console.log("success");
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+            $('.DetailProject.hienlen .teamLeader').html('Scrum Master: '+fullNameScrumMaster)
 
         });
         
 
 
-
-
-
-        if(managerName!=ManagerName)//neu manager thay doi thi khi back project manager page
-                                     // phai xoa du project do trong list
-        {
-
-          
-            // xoa dong tren giao dien
-        }
-
-        else
-        {
-          
-            //update lai du lieu va ve lai giao dien
-
-
-
-        }
-        
-
-            
     });
+
+    // end assign scrum master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     function doingay(ngay)
     {
@@ -425,19 +496,6 @@
             edate='' + (1 + edate.getMonth()) + '-' + edate.getDate() + '-' + edate.getFullYear();
             return edate;
     }
-    //end processing when update project 
 })  
 
  
- // success: function (data) {
- //                    var rows = '';
- //                    $.each(data, function (i, item) {
- //                        rows += "<tr>"
- //                        rows += "<td>" + item.Id + "</td>"
- //                        rows += "<td>" + item.Name + "</td>"
- //                        rows += "<td>" + item.Author + "</td>"
- //                        rows += "<td>" + item.Price + "</td>"
- //                        rows += "<td><button type='button' id='btnEdit' class='btn btn-default' onclick='return getDetailBook(" + item.Id + ")'>Edit</button> <button type='button' id='btnDelete' class='btn btn-danger' onclick='return deleteBook(" + item.Id + ")'>Delete</button></td>"
- //                        rows += "</tr>";
- //                        $("#listBooks tbody").html(rows);
- //                    });
