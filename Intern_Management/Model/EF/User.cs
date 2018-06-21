@@ -30,6 +30,24 @@ namespace Model.EF
 
         public int? RoleID { get; set; }
 
+        [StringLength(200)]
+        public string userdes { get; set; }
+
+        [StringLength(50)]
+        public string University { get; set; }
+
+        [StringLength(200)]
+        public string imagecover { get; set; }
+
+        [StringLength(200)]
+        public string imagelogin { get; set; }
+
+        [StringLength(100)]
+        public string userAddress { get; set; }
+
+        [StringLength(100)]
+        public string specialized { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feature> Features { get; set; }
 

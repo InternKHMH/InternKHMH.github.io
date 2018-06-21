@@ -8,7 +8,7 @@ namespace Model.EF
     public partial class InternDB : DbContext
     {
         public InternDB()
-            : base("name=InternDB1")
+            : base("name=InternDB2")
         {
         }
 
@@ -43,6 +43,14 @@ namespace Model.EF
 
             modelBuilder.Entity<User>()
                 .Property(e => e.Passwords)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.imagecover)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.imagelogin)
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
