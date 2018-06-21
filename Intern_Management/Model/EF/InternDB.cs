@@ -8,11 +8,13 @@ namespace Model.EF
     public partial class InternDB : DbContext
     {
         public InternDB()
-            : base("name=InternDB")
+            : base("name=InternDB1")
         {
         }
 
+        public virtual DbSet<FeatureGroup> FeatureGroups { get; set; }
         public virtual DbSet<Feature> Features { get; set; }
+        public virtual DbSet<ImagesFeature> ImagesFeatures { get; set; }
         public virtual DbSet<ProjectMember> ProjectMembers { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
@@ -21,6 +23,14 @@ namespace Model.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Feature>()
+                .Property(e => e.Descrip)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Feature>()
+                .Property(e => e.comment)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Project>()
                 .HasMany(e => e.ProjectMembers)
                 .WithRequired(e => e.Project)

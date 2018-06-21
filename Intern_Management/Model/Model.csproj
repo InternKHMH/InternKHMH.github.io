@@ -57,6 +57,8 @@
     <Compile Include="Dao\StatusDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="EF\Feature.cs" />
+    <Compile Include="EF\FeatureGroup.cs" />
+    <Compile Include="EF\ImagesFeature.cs" />
     <Compile Include="EF\InternDB.cs" />
     <Compile Include="EF\Project.cs" />
     <Compile Include="EF\ProjectMember.cs" />

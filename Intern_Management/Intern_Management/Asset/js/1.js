@@ -81,7 +81,7 @@
                 dsmb+='</tr>';
         
             }
-            
+
 
             $('.DetailProject .memberlist .lstmember').html(dsmb);
             
@@ -92,7 +92,7 @@
             for(var k=0;k<res[5].length;k++)
             {
                
-                motdong+='<tr>';
+                motdong+='<tr data-featureidload="'+res[5][k].FeatureID+'">';
                 motdong+='<td scope="row">'+res[5][k].FeatureName+' </td>';
                 motdong+=' <td>'+res[5][k].FeatureOwer+'</td>';
                 motdong+=' <td>'+res[5][k].FeatureDuration+'</td>';
@@ -475,20 +475,29 @@
 
 
 
+//////////////////////////////////xu ly su kien tren trang detailfeture
+    
+    //click de hien thi trang   detailfeature
+    $('body').on('click','.feature_member .table tbody.listfeaturemember tr',function(event){
+    //xu ly giao dien
+        var featureID=$(this).data('featureidload'),
+            chieucaothe= $('.container.DetailProject.hienlen').height();
+        $('.DetailFeature').height(chieucaothe);
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        //hien thi trang detailfeature
+           $('.DetailFeature').removeClass('DetailFeatureAnxuong');
+        $('.DetailFeature').addClass('DetailFeatureHienLen') ;
 
 
+     // end xu ly giao dien
 
+    })
+    
+    $('body').on('click','.DetailFeature.DetailFeatureHienLen .fa.fa-chevron-left',function(event){
+            $('.DetailFeature.DetailFeatureHienLen').addClass('DetailFeatureAnxuong');
+            $('.DetailFeature').removeClass('DetailFeatureHienLen')
 
-
-
-
-
-
-
-
-
-
-
+    }) ;
 
     function doingay(ngay)
     {

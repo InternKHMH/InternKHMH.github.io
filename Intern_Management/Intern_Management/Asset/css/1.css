@@ -426,38 +426,6 @@ css cho footer */
     margin-bottom: 5px;
 }
 
-*{margin: 0; padding: 0;}
-
-.DetailFeature .container {
-    background-color: #ffffffeb;
-    padding: 50px 0px;
-}
-
-.DetailFeature {
-    position:  absolute;
-    top: 0px;
-    padding-top: 79px;
-    background-color: #000000a6;
-    color: black;
-    width:  100%;
-    transition:  0.4s;
-    height:  100%;
-    transform: translateZ(100px) scale(0.2);
-    visibility:  hidden;
-    opacity: 0;
-}
-
-.DetailProject.hienlen .table .listfeaturemember tr:hover {
-    background-color: lightblue;
-    color: black;
-    cursor:  pointer;
-}
-
-
-
-.table.memberlist .lstmember tr td {
-    position:  relative;
-}
 
 i.fa.fa-pencil.nuteditproject.mr-1 {
     font-size: 24px;
@@ -498,32 +466,6 @@ tbody.lstmember td:hover {
     background-color: #ffff0059;
     cursor:  pointer;
 }
-/*css cho tooltip hien thi de assign leader*/
-
-/*.tooltip{
-    position:relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-}
-.tooltip .tooltiptext{
-    visibility: hidden;
-    width: 120px;
-    background: black;
-    color:#fff;
-    text-align: center;
-    padding:5px 0;
-    border-radius: 6px;
-    position: absolute;
-    z-index: 6;
-}
-.tooltip:hover .tooltiptext{
-    visibility: visible;
-}*/
-
-/*end css cho tooltip hien thi de assign leader*/
-
-
-
 
 .tddsproject .danhsachproject tr:hover {
     background-color: #add8e65e;
@@ -580,10 +522,87 @@ tbody.lstmember td:hover {
     100%{transform: scale(0.5);opacity:0 ;visibility: collapse;}
     
 }
-
-
-
 /* end css cho khoi them project */
+
+/*css cho trang detail project */
+*{margin: 0; padding: 0;}
+
+.DetailFeature.DetailFeatureHienLen span.fa.fa-chevron-left {
+    font-size: 38px;
+    position:  fixed;
+    left: 116px;
+    top: 30%;
+    color: #d8d0d0;
+    width:  50px;
+    height:  50px;
+    background-color: #000000a1;
+    text-align:  center;
+    padding-top: 7px;
+    cursor:  pointer;
+    transition: 0.5s;
+}
+
+.DetailFeature.DetailFeatureHienLen span.fa.fa-chevron-left:hover {
+    color: red;
+    background-color: lightblue;
+}
+
+
+.DetailFeature .container {
+    background-color: #ffffffeb;
+    padding: 50px 0px;
+}
+
+.DetailFeature {
+    position:  absolute;
+    top: 0px;
+    padding-top: 79px;
+    background-color: #000000a6;
+    color: black;
+    width:  100%;
+    transition:  0.4s;
+    height:  100%;
+    transform: translateZ(100px) scale(0.2);
+    visibility:  hidden;
+    opacity: 0;
+    transform-origin: 50% 50%;
+}
+
+
+.DetailFeature.DetailFeatureHienLen{
+    animation: DetailFeatureHienLen 1s forwards;
+}
+
+@-webkit-keyframes DetailFeatureHienLen{
+    0%{opacity:0;visibility: hidden;transform: translateZ(100px) scale(0.2);transform-origin:50% 50%;}
+    50%{opacity:1;visibility: visible;transform: translateZ(50px) scale(0.7) rotate(45deg); }
+    100%{opacity:1;visibility: visible;transform: translateZ(0px) scale(1) rotate(0deg);}
+}
+.DetailFeature.DetailFeatureAnxuong{
+    animation: DetailFeatureAnxuong 1s forwards;
+}
+
+@-webkit-keyframes DetailFeatureAnxuong{
+    0%{opacity:1;visibility: visible;transform: translateZ(0px) scale(1) rotate(0deg);}
+    50%{opacity:1;visibility: visible;transform: translateZ(50px) scale(0.7) rotate(45deg); }
+  
+    100%{opacity:0;visibility: hidden;transform: translateZ(100px) scale(0.2);transform-origin:50% 50%;}
+    
+}
+
+
+
+.DetailProject.hienlen .table .listfeaturemember tr:hover {
+    background-color: lightblue;
+    color: black;
+    cursor:  pointer;
+}
+.table.memberlist .lstmember tr td {
+    position:  relative;
+}
+
+/*end css cho trang detail feature*/
+
 
 @media (max-width: 880px) {
 

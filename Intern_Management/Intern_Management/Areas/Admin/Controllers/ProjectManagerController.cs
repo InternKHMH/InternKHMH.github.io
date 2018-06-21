@@ -97,6 +97,7 @@ namespace Intern_Management.Areas.Admin.Controllers
                     fm.FeatureOwer = item.FullName;
                     fm.FeatureName = fc.FeatureName;
                     fm.FeatureStatus = fc.StatusCheck.StatusName;
+                    fm.FeatureID = fc.FeatureID;
                     dsFeatureMb.Add(fm);
                 }
             }

@@ -1,0 +1,611 @@
+﻿
+@{
+    Layout = null;
+    var _4Slide = (List<Model.EF.User>)ViewBag.dsSlideTo;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>InternManager </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="~/Asset/vendor/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Asset/js/InternManager.js"></script>
+    <link rel="stylesheet" href="~/Asset/vendor/bootstrap.css">
+    <link rel="stylesheet" href="~/Asset/vendor/font-awesome.css">
+    <link rel="stylesheet" href="~/Asset/css/InternManager.css">
+</head>
+<body>
+
+
+
+    <div class="menu">
+        <div class="container-fluid">
+            <div class="row menutren">
+                <div class="col-xs-4">Lorem ipsum dolor sit amet, consectetur adipisicing !.</div>
+                <div class="col-xs-6 col-xs-offset-2">
+                    <ul>
+                        <li>Help |</li>
+                        <li>Log out |<i class="fa fa-sign-in"></i></li>
+                        <li>Log In |<i class="fa fa-sign-out"></i></span></li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div> <!-- het menu tren -->
+    </div>
+    <div class="phangiuamenu">
+        <div class="container">
+            <div class="row menugiua">
+                <div class="col-xs-3">
+                    <span class="logo">TMA</span>
+                    <h3 class="tieude">Solutions</h3>
+                </div>
+                <div class="col-xs-6">
+                    <fieldset class="form-group">
+
+                        <input type="text" class="form-control input-lg" id="formGroupExampleInput" placeholder="Seach">
+                        <span class="btnseach btn btn-success">Seach</span>
+                    </fieldset>
+
+                </div>
+
+                <div class="col-xs-3 lienhe">
+                    <i class="fa fa-phone"></i>
+                    <span>Call Me.</span>
+                </div>
+            </div>
+        </div> <!-- end container gioi thieu cong ty -->
+
+        <div class="menuduoi">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 noidung">
+                        <div class="iconhome"><i class="fa fa-home"></i></div>
+                        <ul>
+                            <li>Project Manager</li>
+                            <li>Intern Manager</li>
+                            <li>Inventory Manager</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- het khoi menu duoi -->
+    </div>
+
+    <div class="khoislide">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-8">
+
+                    
+
+
+
+
+
+                    <div class="motslide active" style='background-image: url("../../Asset/images/1.jpg")'>
+                        <div class="noidung ">
+                            <h3 class="tieudeslide">Lorem ipsum dolor sit amet1.</h3>
+                            <p class="motaslide">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolor est laborum.
+                            </p>
+                        </div>
+                    </div> <!-- het mot slide -->
+                    <div class="motslide" style="background-image: url('../../Asset/images/2.jpg')">
+                        <div class="noidung">
+                            <h3 class="tieudeslide">Lorem ipsum dolor sit amet2.</h3>
+                            <p class="motaslide">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolor est laborum.
+                            </p>
+                        </div>
+                    </div> <!-- het mot slide -->
+                    <div class="motslide" style="background-image: url('../../Asset/images/4.jpg')">
+                        <div class="noidung">
+                            <h3 class="tieudeslide">Lorem ipsum dolor sit amet3.</h3>
+                            <p class="motaslide">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolor est laborum.
+                            </p>
+                        </div>
+                    </div> <!-- het mot slide -->
+                    <div class="motslide" style="background-image: url('../../Asset/images/5.jpg')">
+                        <div class="noidung">
+                            <h3 class="tieudeslide">Lorem ipsum dolor sit amet4.</h3>
+                            <p class="motaslide">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolor est laborum.
+                            </p>
+                        </div>
+                    </div> <!-- het mot slide -->
+
+
+                    <div class="nuttrai" data-endslide="endslide"><i class="fa fa-chevron-left"></i></div>
+                    <div class="nutphai" data-endslide="endslide"><i class="fa fa-chevron-right"></i></div>
+
+                </div> <!-- het slide lớn -->
+
+                <div class="col-xs-4">
+                    <div class="slideshow">
+
+                        <div class="slidenho" style="background-image:url('../../Asset/images/2.jpg')">
+                            <div class="noidung">
+                                <h3 class="tdslidenho">Lorem ipsum dolor sit amet.</h3>
+                                <p class="mtslidenho">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolor est laborum.
+                                </p>
+                            </div>
+                        </div> <!-- het mot slide -->
+                        <div class="slidenho" style="background-image:url('../../Asset/images/2.jpg')">
+                            <div class="noidung">
+                                <h3 class="tdslidenho">Lorem ipsum dolor sit amet.</h3>
+                                <p class="mtslidenho">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolor est laborum.
+                                </p>
+                            </div>
+                        </div> <!-- het mot slide -->
+                        <div class="slidenho" style="background-image:url('../../Asset/images/2.jpg')">
+                            <div class="noidung">
+                                <h3 class="tdslidenho">Lorem ipsum dolor sit amet.</h3>
+                                <p class="mtslidenho">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolor est laborum.
+                                </p>
+                            </div>
+                        </div> <!-- het mot slide -->
+
+                        <div class="slidenho" style="background-image:url('../../Asset/images/2.jpg')">
+                            <div class="noidung">
+                                <h3 class="tdslidenho">Lorem ipsum dolor sit amet.</h3>
+                                <p class="mtslidenho">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolor est laborum.
+                                </p>
+                            </div>
+                        </div> <!-- het mot slide -->
+
+
+                       
+
+                    </div> <!-- end slideshow -->
+                </div> <!-- end col 4 -->
+
+            </div>
+        </div>
+    </div><!--  het slide -->
+
+
+    <div class="listintern mt-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-9">
+
+                    <div class="nutthemintern btn btn-primary" data-toggle="modal" data-target="#activeintern">
+                        Add Intern
+                    </div>
+
+                    <h3 class="tieudelistintern">List Intern</h3>
+                    <fieldset class="form-group">
+                        <input type="text" class="form-control seachintern" placeholder="Seach name intern">
+                        <button class="btn btn-outline-success nutseachintern">Find</button>
+                    </fieldset>
+                    <hr>
+
+
+                    <div class="motintern mt-1 ">
+
+                        <div class="anhintern" style="background-image: url('../../Asset/images/2.jpg')"></div>
+                        <div class="thongtinintern">
+                            <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
+                            <h4 class="internname">phạm văn khánh</h4>
+                            <p class="motaintern">
+                                Lorem ipsum dolor sit ame aliquip ex ea commodo
+                                consequat. Duis aute irure dolor  laborum.
+                            </p>
+                            <div class="cacnoidungnho">
+                                <small class="mr-1">Number project joined: <span class="so">10</span></small>
+                                <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
+                                <small><i class="fa fa-university"></i> University: <span class="so">FPT</span></small>
+                            </div>
+
+                        </div> <!-- end thong tin intern -->
+                    </div> <!-- end mot intern  -->
+
+                    <div class="motintern mt-1 ">
+
+                        <div class="anhintern" style="background-image: url('../../Asset/images/2.jpg')"></div>
+                        <div class="thongtinintern">
+                            <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
+                            <h4 class="internname">phạm văn khánh</h4>
+                            <p class="motaintern">
+                                Lorem ipsum dolor sit ame aliquip ex ea commodo
+                                consequat. Duis aute irure dolor  laborum.
+                            </p>
+                            <div class="cacnoidungnho">
+                                <small class="mr-1">Number project joined: <span class="so">10</span></small>
+                                <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
+                                <small><i class="fa fa-university"></i> University: <span class="so">FPT</span></small>
+                            </div>
+
+                        </div> <!-- end thong tin intern -->
+                    </div> <!-- end mot intern  -->
+
+                    <div class="motintern mt-1 ">
+
+                        <div class="anhintern" style="background-image: url('../../Asset/images/2.jpg')"></div>
+                        <div class="thongtinintern">
+                            <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
+                            <h4 class="internname">phạm văn khánh</h4>
+                            <p class="motaintern">
+                                Lorem ipsum dolor sit ame aliquip ex ea commodo
+                                consequat. Duis aute irure dolor  laborum.
+                            </p>
+                            <div class="cacnoidungnho">
+                                <small class="mr-1">Number project joined: <span class="so">10</span></small>
+                                <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
+                                <small><i class="fa fa-university"></i> University: <span class="so">FPT</span></small>
+                            </div>
+
+                        </div> <!-- end thong tin intern -->
+                    </div> <!-- end mot intern  -->
+
+                    <div class="motintern mt-1 ">
+
+                        <div class="anhintern" style="background-image: url('../../Asset/images/2.jpg')"></div>
+                        <div class="thongtinintern">
+                            <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
+                            <h4 class="internname">phạm văn khánh</h4>
+                            <p class="motaintern">
+                                Lorem ipsum dolor sit ame aliquip ex ea commodo
+                                consequat. Duis aute irure dolor  laborum.
+                            </p>
+                            <div class="cacnoidungnho">
+                                <small class="mr-1">Number project joined: <span class="so">10</span></small>
+                                <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
+                                <small><i class="fa fa-university"></i> University: <span class="so">FPT</span></small>
+                            </div>
+
+                        </div> <!-- end thong tin intern -->
+                    </div> <!-- end mot intern  -->
+
+                    <div class="motintern mt-1 ">
+
+                        <div class="anhintern" style="background-image: url('../../Asset/images/2.jpg')"></div>
+                        <div class="thongtinintern">
+                            <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
+                            <h4 class="internname">phạm văn khánh</h4>
+                            <p class="motaintern">
+                                Lorem ipsum dolor sit ame aliquip ex ea commodo
+                                consequat. Duis aute irure dolor  laborum.
+                            </p>
+                            <div class="cacnoidungnho">
+                                <small class="mr-1">Number project joined: <span class="so">10</span></small>
+                                <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
+                                <small><i class="fa fa-university"></i> University: <span class="so">FPT</span></small>
+                            </div>
+
+                        </div> <!-- end thong tin intern -->
+                    </div> <!-- end mot intern  -->
+
+                    <div class="motintern mt-1 ">
+
+                        <div class="anhintern" style="background-image: url('../../Asset/images/2.jpg')"></div>
+                        <div class="thongtinintern">
+                            <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
+                            <h4 class="internname">phạm văn khánh</h4>
+                            <p class="motaintern">
+                                Lorem ipsum dolor sit ame aliquip ex ea commodo
+                                consequat. Duis aute irure dolor  laborum.
+                            </p>
+                            <div class="cacnoidungnho">
+                                <small class="mr-1">Number project joined: <span class="so">10</span></small>
+                                <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
+                                <small><i class="fa fa-university"></i> University: <span class="so">FPT</span></small>
+                            </div>
+
+                        </div> <!-- end thong tin intern -->
+                    </div> <!-- end mot intern  -->
+
+                    <div class="motintern mt-1 ">
+
+                        <div class="anhintern" style="background-image: url('../../Asset/images/2.jpg')"></div>
+                        <div class="thongtinintern">
+                            <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
+                            <h4 class="internname">phạm văn khánh</h4>
+                            <p class="motaintern">
+                                Lorem ipsum dolor sit ame aliquip ex ea commodo
+                                consequat. Duis aute irure dolor  laborum.
+                            </p>
+                            <div class="cacnoidungnho">
+                                <small class="mr-1">Number project joined: <span class="so">10</span></small>
+                                <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
+                                <small><i class="fa fa-university"></i> University: <span class="so">FPT</span></small>
+                            </div>
+
+                        </div> <!-- end thong tin intern -->
+                    </div> <!-- end mot intern  -->
+                    <!-- khoi các nut phân trang -->
+                    <div class="khoiphantrang mt-1">
+                        <span class="nutchuyentrangtrai"><i class="fa fa-chevron-left"></i></span>
+                        <ul class="danhsachtrang">
+                            <li class="mottrang">1</li>
+                            <li class="mottrang">2</li>
+                            <li class="mottrang">3</li>
+                            <li class="mottrang">4</li>
+                        </ul>
+                        <span class="nutchuyentranphai"><i class="fa fa-chevron-right"></i></span>
+
+
+                    </div>
+
+                </div> <!-- end col 9 danh sach intern --><!-- danh sach phai -->
+                <div class="col-xs-3 danhsachphai">
+                    <h3 class="tieudelistintern">intern host</h3>
+                    <hr>
+                    <div class="motintern mt-1" style="width: 100%;">
+                        <div class="anhintern" style="background-image: url('../../Asset/images/5.jpg')"></div>
+                        <div class="thongtinintern">
+
+                            <div class="internname">Phạm Đức Minh</div>
+                            <p class="motaintern">
+                                Lorem ipsum dolor sit ame aliquip ex ea commodo
+                                consequat. Duis aute irure dolor  laborum.
+                            </p>
+
+                            <div class="chunhothoi">Number project joined: <span class="so">10</span></div>
+                            <div class="chunhothoi">Joined to Company: <span class="so">7/5/2017</span></div>
+                            <div class="chunhothoi">University: <span class="so">FPT</span></div>
+                        </div>
+
+
+
+                    </div> <!-- end mot intern  -->
+                    <div class="motintern mt-1" style="width: 100%;">
+                        <div class="anhintern" style="background-image: url('../../Asset/images/5.jpg')"></div>
+                        <div class="thongtinintern">
+
+                            <div class="internname">Phạm Đức Minh</div>
+                            <p class="motaintern">
+                                Lorem ipsum dolor sit ame aliquip ex ea commodo
+                                consequat. Duis aute irure dolor  laborum.
+                            </p>
+
+                            <div class="chunhothoi">Number project joined: <span class="so">10</span></div>
+                            <div class="chunhothoi">Joined to Company: <span class="so">7/5/2017</span></div>
+                            <div class="chunhothoi">University: <span class="so">FPT</span></div>
+                        </div>
+
+
+
+                    </div> <!-- end mot intern  -->
+                    <div class="motintern mt-1" style="width: 100%;">
+                        <div class="anhintern" style="background-image: url('../../Asset/images/5.jpg')"></div>
+                        <div class="thongtinintern">
+
+                            <div class="internname">Phạm Đức Minh</div>
+                            <p class="motaintern">
+                                Lorem ipsum dolor sit ame aliquip ex ea commodo
+                                consequat. Duis aute irure dolor  laborum.
+                            </p>
+
+                            <div class="chunhothoi">Number project joined: <span class="so">10</span></div>
+                            <div class="chunhothoi">Joined to Company: <span class="so">7/5/2017</span></div>
+                            <div class="chunhothoi">University: <span class="so">FPT</span></div>
+                        </div>
+
+
+
+                    </div> <!-- end mot intern  -->
+                    <div class="motintern mt-1" style="width: 100%;">
+                        <div class="anhintern" style="background-image: url('../../Asset/images/5.jpg')"></div>
+                        <div class="thongtinintern">
+
+                            <div class="internname">Phạm Đức Minh</div>
+                            <p class="motaintern">
+                                Lorem ipsum dolor sit ame aliquip ex ea commodo
+                                consequat. Duis aute irure dolor  laborum.
+                            </p>
+
+                            <div class="chunhothoi">Number project joined: <span class="so">10</span></div>
+                            <div class="chunhothoi">Joined to Company: <span class="so">7/5/2017</span></div>
+                            <div class="chunhothoi">University: <span class="so">FPT</span></div>
+                        </div>
+
+
+
+                    </div> <!-- end mot intern  -->
+
+
+                </div> <!-- end col 2 -->
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="activeintern" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+
+                </div>
+                <div class="khoithemintern container">
+                    <div class="row">
+                        <div class="col-xs-10 text-xs-center push-sm-1">
+                            <h3>List Intern Registered.</h3>
+
+                            <table class="table table-responsive table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Full Name</th>
+                                        <th>BirthDay</th>
+                                        <th>University</th>
+                                        <th>specialized</th>
+                                        <th>Address</th>
+                                        <th>active</th>
+                                        <th>action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td class="fullname" data-idintern="1">nguyen huy hoang</td>
+                                        <td class="birthday">17/05/1995</td>
+                                        <td class="university">Tran dai nghia</td>
+                                        <td class="specialized">programer .net</td>
+                                        <td class="specialized">programer .net</td>
+
+                                        <td class="kichhoat tooltip-test" title="Active intern">InActive</td>
+                                        <td><i class="fa fa-times"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fullname" data-idintern="1">nguyen huy hoang</td>
+                                        <td class="birthday">17/05/1995</td>
+                                        <td class="university">Tran dai nghia</td>
+                                        <td class="specialized">programer .net</td>
+                                        <td class="specialized">programer .net</td>
+
+                                        <td class="kichhoat tooltip-test" title="Active intern">InActive</td>
+                                        <td><i class="fa fa-times"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fullname" data-idintern="1">nguyen huy hoang</td>
+                                        <td class="birthday">17/05/1995</td>
+                                        <td class="university">Tran dai nghia</td>
+                                        <td class="specialized">programer .net</td>
+                                        <td class="specialized">programer .net</td>
+
+                                        <td class="kichhoat tooltip-test" title="Active intern">InActive</td>
+                                        <td><i class="fa fa-times"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fullname" data-idintern="1">nguyen huy hoang</td>
+                                        <td class="birthday">17/05/1995</td>
+                                        <td class="university">Tran dai nghia</td>
+                                        <td class="specialized">programer .net</td>
+                                        <td class="specialized">programer .net</td>
+
+                                        <td class="kichhoat tooltip-test" title="Active intern">InActive</td>
+                                        <td><i class="fa fa-times"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fullname" data-idintern="1">nguyen huy hoang</td>
+                                        <td class="birthday">17/05/1995</td>
+                                        <td class="university">Tran dai nghia</td>
+                                        <td class="specialized">programer .net</td>
+                                        <td class="specialized">programer .net</td>
+
+                                        <td class="kichhoat tooltip-test" title="Active intern">InActive</td>
+                                        <td><i class="fa fa-times"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fullname" data-idintern="1">nguyen huy hoang</td>
+                                        <td class="birthday">17/05/1995</td>
+                                        <td class="university">Tran dai nghia</td>
+                                        <td class="specialized">programer .net</td>
+                                        <td class="specialized">programer .net</td>
+
+                                        <td class="kichhoat tooltip-test" title="Active intern">InActive</td>
+                                        <td><i class="fa fa-times"></i></td>
+                                    </tr>
+
+
+
+                                </tbody>
+                            </table> <!-- end table -->
+
+                            <ul class="phantrang">
+                                <li class="kichhoatphantrang">1</li>
+                                <li>2</li>
+                                <li>3</li>
+                                <li>4</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                </div> <!-- end khoi them intern -->
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="thongbaoxoaintern" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Intern</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure delete intern <span style="color:red;">Pham Van Khanh</span>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="khoifooter">
+        <div class="container">
+            <div class="row topfooter">
+                <div class="col-xs-12">
+                    <ul>
+                        <li><a href="#">home</a></li>
+                        <li><a href="#">about</a></li>
+                        <li><a href="#">servirs</a></li>
+                        <li><a href="#">contact</a></li>
+                    </ul>
+                    <hr>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-sm-4"><h2>TMA SOLUTIONS</h2><a class="linkcty" href="wwww.tmasolutions.com">wwww.tmasolutions.com</a></div>
+                <div class="col-sm-4">
+                    <h3 class="about">CONTACT</h3>
+                    <ul>
+                        <li><i class="fa fa-phone"></i></li>
+                        <li><i class="fa fa-map-marker"></i></li>
+                        <li><i class="fa fa-envelope-square"></i></li>
+                        <li><i class="fa fa-facebook"></i></li>
+                        <li><i class="fa fa-google-plus"></i></li>
+                    </ul>
+
+
+                </div>
+                <div class="col-sm-4">
+                    <h3 class="help">Help</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottomfooter">
+
+        </div>
+    </div>
+</body>
+</html>

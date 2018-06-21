@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Intern_Management.Areas.Admin.Models;
 using Model.Dao;
 using Model.EF;
-
+using System.Web.Routing;
 
 namespace Intern_Management.Areas.Admin.Controllers
 {
@@ -27,8 +27,19 @@ namespace Intern_Management.Areas.Admin.Controllers
                 {
                     
                     Session.Add(Common.CommonConstants.USE_SESSISON, dao.GetByUserName(model.UserName));
-                    return RedirectToAction("Index", "ProjectManager");
 
+                    //new { controller = "Login", action = "Index", Area = "Admin" }));
+                    int? rolID = ((User)Session[Common.CommonConstants.USE_SESSISON]).RoleID;
+                    if (rolID==2)//manager
+                    {
+                        return RedirectToAction("Index", "ProjectManager");
+                    }
+
+                    if(rolID==4)//intern
+                    {
+                        return RedirectToAction("Index", "Home", new RouteValueDictionary(new { controller = "Home", action = "Index", Area = "Member" }));
+                    }
+                    
                 }
                 else
                 {

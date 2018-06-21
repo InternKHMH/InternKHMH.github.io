@@ -64,6 +64,8 @@ namespace Model.Dao
           
         }
 
+
+
         public int AssignScrumMaster(int? projectID, int? scrumMasterID)
         {
             // buoc 1: dua scrum master cu tro lai thanh member 
@@ -104,6 +106,44 @@ namespace Model.Dao
             }
 
 
+        }
+
+        private List<int> GetAllManager()
+        {
+            List<int> ds = (from c in db.ProjectMembers
+                            where c.RoleID == 2
+                            select c.UserID ).Distinct().ToList();
+            return ds;
+        }
+
+        public List<User> Top4IDUserJoinedProject()
+        {
+            List<int> dsManagerProject = GetAllManager();
+            List<User> dl = new List<User>();
+            var query = from user in db.ProjectMembers   // cau truy van nay chua toi uu co thoi gian code lai
+                        group user by user.UserID into userprojectGroup
+
+                        orderby userprojectGroup.Count() descending
+                        select new {  userId = userprojectGroup.Key, soprojectthamgia = userprojectGroup.Count() };
+            var temp = query.ToList();
+
+           
+            foreach(var c in temp)
+            {
+                int co = 0;
+                foreach(int d in dsManagerProject)
+                {
+                    if(c.userId==d)
+                    {
+                        co = 1;
+                        break;
+                     
+                    }
+                }
+                if (co == 0) { dl.Add((new UserDao()).GetByUserId(c.userId)); }
+            }
+            
+            return dl;
         }
 
     }

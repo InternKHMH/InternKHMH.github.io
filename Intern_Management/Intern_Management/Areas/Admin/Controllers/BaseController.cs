@@ -18,7 +18,7 @@ namespace Intern_Management.Areas.Admin.Controllers
         {
             try
             {
-                    var sess = (User)Session[CommonConstants.USE_SESSISON];
+                var sess = (User)Session[CommonConstants.USE_SESSISON];
                 if(sess==null)
                 {
                     filterContext.Result = new RedirectToRouteResult(

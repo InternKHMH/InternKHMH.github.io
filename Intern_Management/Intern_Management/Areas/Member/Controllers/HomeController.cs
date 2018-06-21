@@ -4,11 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Intern_Management.Areas.Admin.Controllers
+
+namespace Intern_Management.Areas.Member.Controllers
 {
-    public class InternMemberManagerController : Controller
+    public class HomeController : Intern_Management.Areas.Admin.Controllers.BaseController
     {
-        // GET: Admin/InternMemberManager
+        // GET: Member/Home
         public ActionResult Index()
         {
             return View();
