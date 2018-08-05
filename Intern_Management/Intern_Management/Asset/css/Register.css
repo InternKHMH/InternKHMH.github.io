@@ -1,0 +1,33 @@
+*{
+	margin:0px;padding:0px;
+}
+
+hr {
+    height:  5px;
+    background-image: linear-gradient(to right,#c4317f 10%,green 20%, blue 40%, #f0776c 50%,#669ae1 100%);
+}
+
+span.chunhobentieude {
+    font-size: 17px;
+    font-weight: 400;
+    color: #a99c9c;
+}
+
+span.tieude {
+    font-size: 33px;
+    color: black;
+}
+
+.thongbao{
+    color:red;
+    position:  absolute;
+    right: 0;
+    top: 0;
+    font-size: 30px;
+    font-weight:  bold;
+    cursor:  pointer;
+}
+.chacuathongbao{
+    position:relative;
+}
+

@@ -1,0 +1,330 @@
+﻿
+@{
+    Layout = null;
+    int countTask = 0;
+    var dsTaskDueDate = (List<Model.EF.Feature>)ViewBag.dsTaskDueDate;
+    var  dsProjectActive = (List<Model.EF.Project>)ViewBag.dsProjectActive;
+    var dsProjectCompleted = (List<Model.EF.Project>)ViewBag.dsProjectCompleted;
+    string tennnhom = "";
+}
+
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <title>Task Manager </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <script type="text/javascript" src="~/Asset/vendor/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Asset/js/TaskInternManage.js"></script>
+    <script type="text/javascript" src="~/Asset/js/angular.min.js"></script>
+    <link rel="stylesheet" href="~/Asset/vendor/bootstrap.css">
+    <link rel="stylesheet" href="~/Asset/vendor/font-awesome.css">
+    <link rel="stylesheet" href="~/Asset/css/TaskInternManage.css">
+</head>
+<body>
+    <div class="container-fluid" ng-controller="mainCtrl">
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="khungsearchtren">
+                    <span class="khungseach">
+                        <i class="fa fa-search"></i>
+                        <input type="text" name="" placeholder="SEARCH">
+                    </span>
+                    <span class="tdproject">Task</span>
+                    <span class="tdmanager">management</span>
+                </div>
+
+                <div class="row ndchinh">
+                    <div class="col-sm-2">
+                        <ul>
+                            <li class="fa fa-tachometer activemenutrai"></li>
+                            <li class="fa fa-users"></li>
+                            <li class="fa fa-indent"></li>
+                            <li class="fa fa-tasks"></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-8 push-sm-1">
+                        <div class="khoitren">
+                            <h3>Dashboard</h3>
+                            <ul>
+                                <li class="activemenuproject"><a href="#">active projects</a></li>
+                                <li><a href="#">completed projects</a></li>
+                            </ul>
+                            <span class="nutthemproject fa fa-plus-circle"></span>
+                        </div>
+
+                        <div class="khoiduoi">
+
+
+                            @*khoi danh sach project active*@
+                            @foreach (var item in dsProjectActive)
+                            {
+                                <div class="motkhoiproject nutxemdetailproject" data-toggle="modal" data-target=".bd-example-modal-lg" data-idproject="@item.ProjectID">
+                                    <div class="motkhoiprojecttren">
+                                        <div>
+                                            <span class="chunhopr">project</span>
+                                            <span class="khoitraidongho">
+                                                <span class="fa fa-clock-o"></span>
+                                                <span class="timeCreated">3 hours ago</span>
+                                            </span>
+
+                                        </div>
+                                        <h3 class="tenproject">@item.ProjectName</h3>
+                                        <div class="buttonmauden">@item.ManagerName</div>
+
+                                        <div class="khoithongke">
+
+                                            <div class="assigned mktk">
+                                                <span class="sothongke">4</span>
+                                                <span>assigned</span>
+                                            </div> <!-- end mot khoi thong ke -->
+
+                                            <div class="stated mktk">
+                                                <span class="sothongke">2</span>
+                                                <span>stated</span>
+                                            </div> <!-- end mot khoi thong ke -->
+
+                                            <div class="completed mktk">
+                                                <span class="sothongke">12</span>
+                                                <span>completed</span>
+                                            </div> <!-- end mot khoi thong ke -->
+
+                                        </div>
+                                    </div> <!-- end tren  -->
+                                    <div class="_2thanh">
+                                        <div class="thanh1"></div>
+                                        <div class="thanh2"></div>
+                                    </div>
+                                </div> <!-- end mot khoi project -->
+                            }
+
+                            @*end khoi danh sach project active*@
+
+                        </div> <!-- end khoi duoi -->
+
+                        <ul class="xemthemproject">
+                            <li class="activeproject">1</li>
+                            <li>2</li>
+                            <li>3</li>
+                        </ul>
+
+                    </div> <!-- end col 8 -->
+                </div>
+
+            </div>
+
+
+            <div class="col-sm-2 khoinoidungtrai">
+                <div class="khoitren">
+                    <span class="fa fa-plus-circle"></span>
+                    <span class="fa fa-globe"></span>
+
+
+                    <span class="imageuserlogin" style="background-image:url('images/5.png')"></span>
+                    <span class="usernamelogin">phuong vo</span>
+                    <span class="iconsigout fa fa-sign-out"></span>
+                </div>
+
+                <div class="khoilich">
+                    <h4 class="thu">Thursday</h4>
+                    <small class="ngay">20. April 2018</small>
+
+                </div>
+
+                <h4 class="duetoday">due today</h4>
+                <div class="taskendtoday">
+
+
+                    @foreach (var item in dsTaskDueDate)
+                    {
+                        countTask++;
+                        tennnhom = "nhom" + @countTask / 7;
+                        <div class="motkhoi endtoday1 @tennnhom" data-idtask="@item.FeatureID">
+                            <h5 class="tentask">@item.FeatureName</h5>
+                            <small class="nguoidamnhiem">@item.Project.ManagerName</small>
+                        </div> <!-- end mot khoi -->
+                    }
+                </div>
+
+                <div class="_3nut">
+                    <ul>
+                        @for (int i = 0; i <= dsTaskDueDate.Count() / 7; i++)
+                        {
+                            tennnhom = "nhom" + @i;
+                            <li class="activetaskend" data-tennhom="@tennnhom">1</li>
+
+                        }
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                @*begin container DetailProject*@
+
+                <div class="container DetailProject ">
+                    <input type="hidden" class="inputluuidproject" />
+                    <i class="fa fa-chevron-up nutdilen"></i>
+                    <div class="nutBackDashboard btn btn-danger float-right">X</div>
+                    <div class="row mt-2">
+                        <div class="col-sm-12">
+                            <h3 class="projectName mb-2"></h3>
+                            <h4 class="teamLeader"></h4>
+                        </div>
+                    </div>
+
+                    <div class="row date mt-2">
+                        <div class="col-xs-6"><span class="startdate"></span></div>
+                        <div class="col-xs-6"><span class="enddate"></span></div>
+
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-sm-2">
+                            Member:
+                        </div>
+
+                        <div class="col-sm-6">
+                            <table class="table memberlist">
+
+                                <tbody class="lstmember"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                    </div>
+                    <div class="feature_member">
+                        <h3>List Task </h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>TaskName<i class="fa fa-plus-square nutthemfeature" data-toggle="modal" data-target=".bd-addfeature-modal-lg"></i></th>
+                                    <th>TaskOwer</th>
+                                    <th>Status</th>
+                                    @*<th></th>*@
+                                </tr>
+                            </thead>
+                            <tbody class="listfeaturemember"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+                @*end container DetailProject*@
+            </div>
+        </div>
+
+       
+
+
+    </div> @*end hien thi detail project*@
+
+    <div class="modal fade bd-addfeature-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <label class="thongbaocoquyenthemkhong text-xs-center" style="color:red"></label>
+                @*phan them feature*@
+                <div class="container formaddfeature">
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            Enter infor your task add to project!.
+                            <input type="text" class="form-control tasknameaddfeature" placeholder="TaskName..">
+                            EndDate: <input type="date" class="form-control enddateaddfeature" />
+                            Description:</br>
+                            <textarea class="descriptionaddfeature form-control"></textarea>
+                            Asign to: </br>
+                            <select class="form-control taskoweraddfeature">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            <button class="btn btn-outline-success btn-block nutaddtaskchinhthuc" style="margin-top:10px;">Add Task</button>
+                        </div>
+                    </div>
+                </div>
+
+                @*end phan them feature*@
+            </div>
+        </div>
+    </div>
+
+    <div class="noidungtrangchitietfeature">
+        <div class="DetailFeature">
+            <div class="container">
+                <span class="fa fa-chevron-left nutthoatdetailfeature"></span>
+                <div class="row">
+                    <div class="col-xs-10 offset-xs-1"><img src="#" alt="cover images" /></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-8 offset-xs-1">
+                        <h3 class="titleFeature">view detail project</h3>
+                        <div class="groupFeature">in group: <a href="#">BackLog</a></div>
+                        <div><small class="memberfeature mr-2">Member</small> <small>Due Date</small></div>
+                        <div><small class="memberfeature mr-2">Khanh</small> <small class="dueDateFeature">End Date feature</small></div>
+                        <h3 class="descriptionFeature mt-2">Description</h3>
+                        <div class="noidungdescription">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
+                        <h3 class="mt-2">Attachments</h3>
+                        <div class="images">
+                            <div class="row motkhoianh">
+                                @*mot khoi anh*@
+                                <div class="col-xs-5">anh day</div>
+                                <div class="col-xs-7">
+                                    <div><h4 class="tenanh">DetailProjectScrumMaster</h4></div>
+                                    <div>
+                                        Added:<span class="dateaddimage mr-1">May 21 at 2:43 pm</span>
+                                        <a href="#" class="mr-1">-Comment</a>
+                                        <a href="#">-Delete</a>
+                                    </div>
+                                    <a href="#">Remove cover</a>
+                                </div>
+                            </div> @*het mot khoi anh*@
+                        </div>
+                        <div><a href="#">Add an Attachment</a></div>
+
+                        <h3 class="mt-1">Add Comment</h3>
+
+                        <textarea placeholder="Write a comment..." style="width:100%;height:70px; "></textarea>
+                        <div disabled class="btn btn-outline-secondary">Save</div>
+
+                    </div>
+                    <div class="col-xs-2 mt-4">
+                        <div><h3>Add</h3></div>
+                        <div><h5 class="btn btn-outline-success btn-block">Member</h5></div>
+                        <div><h5 class="btn btn-outline-success btn-block">Labels</h5></div>
+                        <div><h5 class="btn btn-outline-success btn-block">Checklist</h5></div>
+                        <div><h5 class="btn btn-outline-success btn-block">Due Date</h5></div>
+                        <div><h5 class="btn btn-outline-success btn-block">Attachment</h5></div>
+
+                        <div><h3 class="mt-1 mb-1">Actions</h3></div>
+
+                        <div><h5 class="btn btn-outline-success btn-block">Move</h5></div>
+                        <div><h5 class="btn btn-outline-success btn-block">Copy</h5></div>
+                        <div><h5 class="btn btn-outline-success btn-block">Watch</h5></div>
+                        <div><h5 class="btn btn-outline-success btn-block">Archive</h5></div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div> 
+    </div>
+
+    
+</body>
+</html>

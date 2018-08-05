@@ -128,18 +128,51 @@
  	//xong xu ly slide 
  	
 
- 	//xu ly scroll 
 
- 	// $(window).scroll(function(event) {
- 		
+     ///xu ly khi click vao nut add intern
+ 	$('body').on('click', '.nutthemintern', function (event) {
 
- 	// 	$('.nutthemintern.btn.btn-primary').css({
- 	// 		top: $(window).scrollTop()-200			
- 	// 	});
- 		
- 		
- 	
- 	// });
+ 	    $.ajax({
+ 	        url: '/InternManager/Get_7_StudentRegister',
+ 	    	type: 'GET',
+ 	    	dataType: 'json',
+ 	    	data: { numberSkip :0},
+ 	    })
+ 	    .done(function() {
+ 	    	console.log("success");
+ 	    })
+ 	    .fail(function() {
+ 	    	console.log("error");
+ 	    })
+ 	    .always(function(res) {
+ 	    	
+ 	    	var dl='';
+ 	    	for (var i = 0; i <res.length; i++) {
+ 	    		 dl+=' <tr>';
+	 	    	 dl+='<td class="fullname" data-idintern="1">'+res[i].FullName+'</td>';
+	 	    	 dl+='<td class="birthday">17/05/1995</td>';
+	 	    	 dl+=' <td class="university">'+res[i].University+'</td>';
+	 	    	 dl+=' <td class="specialized">'+res[i].specialized+'</td>';
+	 	    	 dl+='<td class="address">'+res[i].userAddress+'</td>';
+	 	    	 dl+=' <td class="kichhoat tooltip-test" title="Active intern">InActive</td>';
+	 	    	 dl+='<td><i class="fa fa-times"></i></td>';
+	 	    	 dl+=' </tr>';
+ 	    
+ 	    	}
+
+ 	    	$('.danh_sach_student_register').html(dl);
+ 	    });
+ 	    
+
+
+
+ 	});
+
+
+
+
+     //end xu ly khi an vao nut add intern
+
 
  	
 })  

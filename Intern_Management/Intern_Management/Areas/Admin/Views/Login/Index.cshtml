@@ -10,22 +10,27 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link href="~/Asset/css/login.css" rel="stylesheet" />
 </head>
 <body>
-   @using (Html.BeginForm("Login", "Login", FormMethod.Post))
-    {   
-        @Html.ValidationSummary(false, "", "error");
+   <div class="cangiua">
+       <div class="noidung text-xs-center">
+           <h4 class="tieude">TMA InternShip Manager</h4>
+           @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+           {
+               @Html.ValidationSummary(false, "", "error");
 
-        <label>UserName: </label>
-        @Html.TextBoxFor(model => Model.UserName, new { @class = "username", });<br />
-        <label>Password: </label>
-        @Html.PasswordFor(model => Model.Password, new { @class = "password" });<br/>
-        <button type="submit" class="btnLogin">Login</button>
-        <label>Remember me</label>
-             @Html.CheckBoxFor(model=>Model.Remember,new { @class="rememberme"})
-        
-    }
-       
-   
+               <label>UserName: </label>
+               @Html.TextBoxFor(model => Model.UserName, new { @class = "username", });<br />
+           <label>Password: </label>
+           @Html.PasswordFor(model => Model.Password, new { @class = "password" });<br />
+       <button type="submit" class="btnLogin">Login</button>
+       <label>Remember me</label>
+       @Html.CheckBoxFor(model => Model.Remember, new { @class = "rememberme" })
+
+           }
+       </div>
+   </div>
+  
 </body>
 </html>

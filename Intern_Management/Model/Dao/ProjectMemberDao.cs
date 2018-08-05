@@ -38,7 +38,6 @@ namespace Model.Dao
                          select pl;
             return result.ToList();
         }
-
         public int UpdateManager(int oldManagerID,int newManagerID,int projectID)
         {
             try
@@ -63,9 +62,6 @@ namespace Model.Dao
             }
           
         }
-
-
-
         public int AssignScrumMaster(int? projectID, int? scrumMasterID)
         {
             // buoc 1: dua scrum master cu tro lai thanh member 
@@ -107,7 +103,6 @@ namespace Model.Dao
 
 
         }
-
         private List<int> GetAllManager()
         {
             List<int> ds = (from c in db.ProjectMembers
@@ -115,7 +110,6 @@ namespace Model.Dao
                             select c.UserID ).Distinct().ToList();
             return ds;
         }
-
         public List<User> Top4IDUserJoinedProject()
         {
             List<int> dsManagerProject = GetAllManager();
@@ -145,6 +139,37 @@ namespace Model.Dao
             
             return dl;
         }
+        public ProjectMember Add(int projectID, int userID, int roleID)
+        {
+          
+            try
+            {
+               ProjectMember ketqua= db.ProjectMembers.Add(new ProjectMember() { ProjectID = projectID, UserID = userID, RoleID = roleID });
+                db.SaveChanges();
+                
+                return ketqua;
+            }
+            catch
+            {
+                return null;
+            }
+             
 
+        }
+
+        public int KiemTraUserCoThamGiaProject(int userID,int projecID)
+        {
+            try
+            {
+                 var result = db.ProjectMembers.SingleOrDefault(x => x.UserID == userID && x.ProjectID == projecID);
+                if (result != null)
+                    return 1;
+                else
+                    return 0;
+            }
+            catch { return 0; }
+          
+            
+        }
     }
 }

@@ -527,6 +527,11 @@ tbody.lstmember td:hover {
 /*css cho trang detail project */
 *{margin: 0; padding: 0;}
 
+.listuseradd td.fa.fa-check-circle.btn.btn-success {
+    font-size: 20px;
+    color: #c9302cc7;
+}
+
 .DetailFeature.DetailFeatureHienLen span.fa.fa-chevron-left {
     font-size: 38px;
     position:  fixed;

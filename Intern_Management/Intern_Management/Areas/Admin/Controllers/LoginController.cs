@@ -37,7 +37,7 @@ namespace Intern_Management.Areas.Admin.Controllers
 
                     if(rolID==4)//intern
                     {
-                        return RedirectToAction("Index", "Home", new RouteValueDictionary(new { controller = "Home", action = "Index", Area = "Member" }));
+                        return RedirectToAction("Index", "Project", new RouteValueDictionary(new { controller = "Project", action = "Index", Area = "Member" }));
                     }
                     
                 }

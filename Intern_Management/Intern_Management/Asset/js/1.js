@@ -24,13 +24,14 @@
 //su kien hien thi trang detail project
     var projectIDClickLink=null;
     $('.linkProject').click(function(event){
-
+      
     	event.preventDefault();
         projectIDClickLink=null;
         //cho trang daitail luôn scroll lên trên
         $(".DetailProject,html, body").animate({ scrollTop: 0 }, "slow");
 
     	var IdProject = $(this).data("idproject");
+    	$('.projectidchotatca').val(IdProject);
         projectIDClickLink=IdProject;
      	 $.ajax({
      	 	url: '/Admin/ProjectManager/GetInforProject',
@@ -47,6 +48,8 @@
      	 .always(function(res) {
      	    
             $('.DetailProject .projectName').html('Project Name: '+res[1]);
+           
+
             $('.DetailProject .teamLeader').html('Scrum Master: '+res[2]);
              
               // var edate = new Date(parseInt(res[4].substr(6)));
@@ -505,6 +508,128 @@
             edate='' + (1 + edate.getMonth()) + '-' + edate.getDate() + '-' + edate.getFullYear();
             return edate;
     }
+
+
+
+
+     //xu ly update status project
+    $('body').on('click', '.statusnametb', function (event) {
+       var idproject=$(this).data('idproject1'),
+            trangthaibandau=$(this).html();
+            if(trangthaibandau=="InActive")
+            {
+                $(this).html('Active');
+            }
+            else
+            {
+                if(trangthaibandau=="Active")
+                $(this).html('InActive');
+            }
+
+            //ham cap nhat trang thai trong co so dulieu
+            if(trangthaibandau=="InActive"||trangthaibandau=="Active")
+            {
+                 $.ajax({
+                url: '/Admin/ProjectManager/ChangeStatus',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    statusName: trangthaibandau,
+                    idProject: idproject
+                },
+                })
+                .done(function() {
+                    console.log("success");
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+                .always(function() {
+                    console.log("complete");
+                });
+            }
+           
+            
+       
+    })
+     //end xu ly update status project
+
+
+     //xu ly chuc nang add them user vào project 
+
+     $('body').on('click','.nutAddMember.col-sm-10 i.fa.fa-user-plus',function(event){
+        //lay tat ca cac user dua vao view
+        var projectId=$('.projectidchotatca').val();
+        $.ajax({
+            url: '/Admin/ProjectManager/GetAllUser',
+            type: 'POST',
+            dataType: 'json',
+            data: {projectID: projectId},
+        })
+        .done(function() {
+            console.log("success");
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function(listUser) {
+            console.log("complete");
+            console.log(listUser);
+
+
+             var data='';
+            for(var i=0;i<listUser[0].length;i++)
+            {
+                var item=listUser[0][i];
+                data+='<tr> <td class="'+item.Key+'">'+item.Value+'</td> <td class="fa fa-check-circle btn btn-success lastnutthemuser" data-projecidadduser='+item.Key+'></td> </tr>';
+            }
+
+            $('.listuseradd').html(data);
+
+
+        });
+        
+
+     })
+
+     $('body').on('click','.lastnutthemuser',function(event){
+        //lay cac parameter
+        if(confirm("Are you sure to want add this intern for your project"))
+        {
+             var projectId=$('.projectidchotatca').val(),
+            userID=$(this).data("projecidadduser");
+
+            //goi ham thuc hien lenh
+
+            $.ajax({
+                url: '/Admin/ProjectManager/AddUser',
+                type: 'POST',
+                dataType: 'json',
+                data: {projectID: projectId,userID:userID},
+            })
+            .done(function() {
+                console.log("success");
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function(res) {
+               if(res!=null)
+               {
+                    var dl='<tr><td data-iduser='+userID+'>'+res[0]+'</td></tr>';
+
+                    $('.table.memberlist .lstmember').append(dl);
+
+               }
+
+            });
+
+            $(this).parent().remove();
+        }
+        
+       
+     })
+
 })  
 
  

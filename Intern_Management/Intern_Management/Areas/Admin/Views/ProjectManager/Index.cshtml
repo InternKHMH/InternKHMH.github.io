@@ -9,6 +9,8 @@
 
     <script src="~/Asset/js/1.js"></script>
 }
+
+
 <div class="toanbonoidungtrang">
     @*form thêm dữ liệu*@
     <div class="dongthemproject">
@@ -101,7 +103,7 @@
                                         <td class="enddatetb">@item.EndDate</td>
                                 }
 
-                                    <td class="statusnametb">@ViewBag.StatusName[item.StatusID]</td>
+                                    <td class="statusnametb" style="cursor:pointer;" data-idproject1="@item.ProjectID">@ViewBag.StatusName[item.StatusID]</td>
                                     <td>
                                         <i class="fa fa-pencil nuteditproject mr-1" data-nuteditproject="@item.ProjectID" data-toggle="modal" data-target="#formupdateproject"></i>
                                         <i class="fa fa-times-circle nutdeleteproject" data-toggle="modal" data-target="#exampleModalCenter" data-nutdeleteproject="@item.ProjectID"></i>
@@ -193,6 +195,7 @@
 
 
     <div class="container DetailProject ">
+    <input type="hidden" class="projectidchotatca"/>
         @*begin container DetailProject*@
         <i class="fa fa-chevron-up nutdilen"></i>
         <div class="nutBackDashboard btn btn-danger float-right">X</div>
@@ -212,7 +215,7 @@
         <div class="row mt-2">
             <div class="col-sm-2">
                 Member:
-                <div class="nutAddMember col-sm-10"> <i class="fa fa-user-plus"></i></div>
+                <div class="nutAddMember col-sm-10" data-toggle="modal" data-target=".bd-adduser-modal-lg"> <i class="fa fa-user-plus"></i></div>
             </div>
 
             <div class="col-sm-4">
@@ -310,6 +313,34 @@
        
     </div> 
     @*end DetailFeature*@
+
+
+    <div class="modal fade bd-adduser-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                @*begin container add user *@
+                   <h3 class="text-xs-center" >Selection intern add your project</h3>
+                   <input  type="text" style="margin-left:15px; width:300px; margin-bottom:10px;" placeholder="search by username..." />
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Action</th>       
+                            </tr>
+                        </thead>
+                        <tbody class="listuseradd">
+
+                        </tbody>
+                    </table>
+               
+                @*end container add user*@
+
+            </div>
+        </div>
+    </div>
+
+
+
 
 </div>
 

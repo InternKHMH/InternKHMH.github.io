@@ -14,7 +14,7 @@ using Model.Dao;
 
 namespace Intern_Management.Areas.Admin.Controllers
 {
-    public class ProjectManagerController : BaseController
+    public class ProjectManagerController : BaseController  
     {
         // GET: Admin/ProjectManager
         public ActionResult Index()
@@ -126,7 +126,22 @@ namespace Intern_Management.Areas.Admin.Controllers
             dl.Add(manager.UserName);
             return Json(dl);
         }
-        
+        /// <summary>
+        /// add user la intern tham gia vao project
+        /// </summary>
+        /// <param name="projectID"></param>
+        /// <param name="userID"></param>
+        /// <returns></returns>
+        public JsonResult AddUser(int projectID,int userID)
+        {
+            ProjectMember result = new ProjectMemberDao().Add(projectID, userID, CommonConstants.INTERN);
+            //lay thong tin user vua moi duoc them
+            User dl = (new UserDao().GetByUserId(result.UserID));
+            ArrayList dlsend = new ArrayList();
+            dlsend.Add(dl.FullName);
+            return Json(dlsend, JsonRequestBehavior.AllowGet);
+
+        }
         [HttpPost]
         public JsonResult Delete(int projectID)
         {
@@ -148,8 +163,6 @@ namespace Intern_Management.Areas.Admin.Controllers
             
             
         }
-
-
         /// <summary>
         /// lay id va fullname cac manager he thong
         /// </summary>
@@ -162,7 +175,6 @@ namespace Intern_Management.Areas.Admin.Controllers
             dl.Add(result.ToList());
             return Json(dl,JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult Update(string projectName,int newManagerID,DateTime startDate,DateTime endDate, int projectID)
         {
             var manager = (User)Session[CommonConstants.USE_SESSISON];
@@ -175,12 +187,42 @@ namespace Intern_Management.Areas.Admin.Controllers
             int result = dao.Update(pr, newManagerID, manager.UserID);
             return Json(result);
         }
+        public JsonResult ChangeStatus(string statusName, int idProject)
+        {
+            int idStatus = CommonConstants.INACTIVE;
+            if(statusName=="InActive")
+            {
+                idStatus = CommonConstants.ACTIVE;
+            }
 
+            int result = new ProjectDao().Update(idStatus, idProject);
+            return Json(result);
+        }
         public JsonResult AssignScrumMaster(int? projectID,int userID)
         {
             return Json((new ProjectMemberDao()).AssignScrumMaster(projectID, userID));
         }
+        /// <summary>
+        /// lay tat ca cac user khac khong thuoc project
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult GetAllUser(int projectID)
+        {
+            List<User> dl = new UserDao().GetAllUser(CommonConstants.INTERN,projectID);
+            Dictionary<int, string> data = new Dictionary<int, string>();
+            foreach(var item in dl)
+            {
+                if(new ProjectMemberDao().KiemTraUserCoThamGiaProject(item.UserID,projectID)==0)
+                {
+                    data.Add(item.UserID, item.UserName);
+                }
+        
+            }
+            ArrayList datasend = new ArrayList();
+            datasend.Add(data.ToList());
+            return Json(datasend, JsonRequestBehavior.AllowGet);
 
+        }
     }
     
 }

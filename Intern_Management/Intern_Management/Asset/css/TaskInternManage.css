@@ -1,0 +1,463 @@
+
+ul.xemthemproject {
+    text-align:  center;
+    width:  100%;
+    position:  absolute;
+    bottom:  0px;
+}
+
+.xemthemproject li {
+    display: inline-block;
+    padding: 0px 10px;
+    margin-top: 10px;
+    width: 20px;
+    height: 20px;
+    text-indent: -9999px;
+    background-color: #0074d9;
+    border-radius:  50%;
+    cursor:  pointer;
+    transition:  0.4s;
+}
+
+.xemthemproject li:hover {
+    background-color: cadetblue;
+}
+
+.container-fluid .row .col-sm-10 {
+    background-color: #f4f4f4;
+    padding-right: 0px;
+}
+
+.row.ndchinh .col-sm-2 ul li {
+    display:  block;
+    width: 175px;
+    height:  140px;
+    text-align:  center;
+    line-height:  140px;
+    margin-bottom:  2px;
+    font-size: 30px;
+    color: #8e8e8e;
+    cursor:  pointer;
+    transition:  0.4s;
+}
+
+li.fa.fa-tachometer.activemenutrai {
+     color: #ba97ee!important;
+     border-right: 2px solid #ba97ee;
+}
+
+.row.ndchinh .col-sm-2 ul li:hover {
+    color: #ba97ee;
+    border-right: 2px solid #ba97ee;
+}
+
+.row.ndchinh .col-sm-2 {
+    border-right: 2px solid #d0cbcb;
+}
+
+span.nutthemproject.fa.fa-plus-circle {
+    float: right;
+    font-size: 45px;
+    cursor:  pointer;
+    color: #9566ec;
+    transition:  0.4s;
+}
+
+span.nutthemproject.fa.fa-plus-circle:hover {
+    color: lightblue;
+}
+
+._2thanh {
+    width:  100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+._2thanh .thanh1 {
+    background-color: yellow;
+    height: 8px;
+}
+
+._2thanh .thanh2 {
+    background-color: green;
+    width:  40%;
+    height:  8px;
+}
+
+.khoithongke .mktk {
+    width:  55px;
+    height:  55px;
+    text-align:  center;
+    border: 2px solid #efefef;
+    color: gray;
+    font-weight: 900;
+    text-transform:  uppercase;
+    font-size: 9px;
+    margin-top: 10px;
+    display:  inline-block;
+}
+
+.khoithongke .mktk span.sothongke {
+    color: black;
+    font-weight:  bold;
+    font-size: 20px;
+    display:  block;
+}
+
+.buttonmauden {
+    height: 20px;
+    display:  inline-block;
+    background-color: black;
+    padding: 0px 5px;
+    border-radius:  2px;
+    color: #e9e9e9;
+    font-size: 12px;
+}
+
+h3.tenproject {
+    color: black;
+    font-weight:  700;
+    font-size: 20px;
+    margin-top: 4px;
+    margin-bottom: 2px;
+}
+
+span.khoitraidongho {
+    float: right;
+    color: black;
+    font-size:  13px;
+    padding-top: 4px;
+}
+
+span.chunhopr {
+    text-transform:  uppercase;
+    font-size: 11px;
+    font-weight:  bold;
+    color: gray;
+}
+
+.motkhoiproject .motkhoiprojecttren {
+    width:  100%;
+    height: 167px;
+    padding: 18px;
+}
+
+.motkhoiproject {
+    width:  220px;
+    height:  185px;
+    background-color: #ffffff;
+    display:  inline-block;
+    overflow:  hidden;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.motkhoiproject:hover {
+    background-color: #a530c545;
+}
+
+.ndchinh .khoitren {
+    margin-bottom:  35px;
+}
+
+.ndchinh .khoitren ul li.activemenuproject a {
+    color: #a365f1;
+    border-bottom:  2px solid #a365f1;
+    padding-bottom: 5px;
+}
+
+.ndchinh .khoitren h3 {
+    font-weight:  bold;
+    color: black;
+}
+
+.ndchinh .khoitren ul li {
+    display:  inline-block;
+    margin-right: 20px;
+}
+
+.ndchinh .khoitren ul li:hover  a {
+    color: #975ae3;
+}
+
+.ndchinh .khoitren ul li a {
+    color: #afafaf;
+    text-decoration:  none;
+    text-transform:  uppercase;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.ndchinh .khoitren ul {}
+
+ul {
+    list-style:  none;
+    display:  inline-block;
+}
+
+._3nut ul li {
+    text-indent: -9000px!important;
+    width: 21px;
+    height: 20px;
+    display:  inline-block;
+    margin: 0px 3px;
+    background-color: #d6c1c1;
+    border-radius:  50%;
+    cursor:  pointer;
+}
+
+._3nut ul li:hover {
+    background-color: lightblue;
+}
+
+._3nut ul {
+    margin-top: 20px;
+    width:  100%;
+    text-align:  center;
+}
+
+small.ngay {
+    color: #e5dcf9;
+    text-transform:  uppercase;
+}
+
+h4.thu {
+    color: white;
+    margin-top: 40px;
+}
+
+small.nguoidamnhiem {
+    font-weight:  bold;
+    color: black;
+}
+
+.taskendtoday h5.tentask {
+    font-size: 10px;
+    font-weight:  bold;
+    color: gray;
+    margin-bottom: 0px;
+    text-transform:  uppercase;
+}
+
+.taskendtoday .motkhoi {
+    height: 40px;
+    background-color: #f4f4f4;
+    padding: 5px 8px;
+    border-left: 5px solid #26b6f0;
+    border-radius:  2px;
+    margin-top: 6px;
+}
+
+.taskendtoday .motkhoi.endtoday1 {
+    border-left: 5px solid #91e899;
+    display: none;
+    overflow:  hidden;
+    cursor:  pointer;
+}
+
+.taskendtoday .motkhoi.endtoday1:hover {
+    background: lightblue;
+}
+
+.taskendtoday .motkhoi.endtoday2 {
+    border-left: 5px solid #ff67d8;
+}
+
+.taskendtoday .motkhoi.endtoday3 {
+    border-left: 5px solid #f8de1e;
+}
+
+body, html {
+    font-family: segoe ui light;
+}
+
+.container.formaddfeature {
+    position:  absolute;
+    z-index: 5;
+    top: 20%;
+    left: 63%;
+    width:  500px;
+    min-height:  200px;
+    background-color: #0c0c0c;
+    margin-left: -350px;
+    transition: 0.4s;
+    border-radius: 5px;
+    color: white;
+    visibility:  hidden;
+    transform: scale(0.5);
+    padding-top: 10px;
+    padding-bottom:  10px;
+}
+
+.container.formaddfeature.hienthi {
+    visibility:  visible;
+    transform:  scale(1);
+}
+
+h4.duetoday {
+    font-size: 20px;
+    color: white;
+    font-weight:  bold;
+    margin-top: 40px;
+    margin-bottom:  25px;
+}
+
+.khoinoidungtrai .khoitren {
+    height:  45px;
+    border-bottom: 1px solid #ffffff42;
+}
+
+.khoinoidungtrai .khoitren span {
+    padding-right: 7px;
+    color: white;
+    font-size: 16px;
+    box-sizing:  border-box;
+    margin-bottom: -8px;
+    display:  inline-block;
+    cursor:  pointer;
+}
+
+.khoinoidungtrai .khoitren span:hover {
+    color: lightblue;
+}
+
+.khoinoidungtrai .khoitren span.imageuserlogin {
+    width: 30px;
+    height: 81%;
+    box-sizing:  border-box;
+    display:  inline-block;
+    background-size: cover;
+    background-repeat:  no-repeat;
+    padding-top: 10px;
+    background-position-y: 5px;
+}
+
+
+.col-sm-2.khoinoidungtrai {
+    background-image: -webkit-linear-gradient(#9d65ef 0%,#a265f0 50%,#a465f1 100%);
+}
+
+a.menu {
+    width:  120px;
+    height:  140px;
+    display:  inline-block;
+    background-repeat:  no-repeat;
+    background-position: center;
+}
+
+.row.ndchinh {
+    background-color: #f0f0f0;
+    padding-top: 50px;
+}
+
+
+
+.khungsearchtren span.tdproject,.khungsearchtren span.tdmanager {
+    color: #7232eb;
+    font-size: 18px;
+    font-family: tahoma;
+}
+
+.khungsearchtren span.tdmanager {
+    color: black;
+}
+
+.khungsearchtren .khungseach input {
+    border: none;
+    height:  100%;
+    padding-left: 10px;
+    width:  30%;
+    margin-right: 25px;
+    border: none;
+}
+
+.khungsearchtren {
+    height:  45px;
+    background-color: #ffffff;
+} 
+
+/*het css giao dien ban dau*/
+
+/*css cho giao phan tuong tac*/
+
+.nutBackDashboard.btn.btn-danger.float-right {
+    float: right;
+    margin-right: -15px;
+}
+
+._3nut {
+    position:  absolute;
+    bottom:  0px;
+    left: 50%;
+    width: 100px;
+    margin-left: -50px;
+}
+
+.motkhoi.endtoday1.listaskhienthi {
+    display: block;
+}
+
+
+/*css cho phan details project*/ 
+
+*{margin: 0; padding: 0;}
+
+span.fa.fa-chevron-left.nutthoatdetailfeature {
+    position: absolute;
+    top: 20%;
+    width:  50px;
+    height:  50px;
+    background-color: yellow;
+    opacity:  0.5;
+    color: red;
+    font-size: 20px;
+    text-align:  center;
+    padding-top: 15px;
+    cursor:  pointer;
+}
+
+.noidungtrangchitietfeature {
+    position:  absolute;
+    top: 0px;
+    left: 6%;
+    background-color: #000000d1;
+    visibility:  hidden;
+    color: white;
+    overflow:  hidden;
+    transform: scale(0.2);
+    transition: 1s;
+}
+
+.noidungtrangchitietfeature.dtfeaturehienthi {
+    visibility:  visible;
+    transform: scale(1);
+}
+
+label.thongbaocoquyenthemkhong.text-xs-center {
+    padding-left: 241px;
+}
+
+
+
+i.fa.fa-plus-square.nutthemfeature {
+    font-size: 20px;
+    margin-left: 10px;
+    cursor:  pointer;
+    transition:  0.4s;
+}
+
+i.fa.fa-plus-square.nutthemfeature:hover {
+    background-color: lightblue;
+    color: red;
+}
+
+.modal-content {
+    min-height: 600px;
+}
+
+
+
+
+
+/*end css cho details project*/

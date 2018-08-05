@@ -1,7 +1,7 @@
-﻿
-@{
+﻿@{
     Layout = null;
     var _4Slide = (List<Model.EF.User>)ViewBag.dsSlideTo;
+    var _7Intern = (List<Model.EF.User>)ViewBag.ds7Intern;
 }
 
 <!DOCTYPE html>
@@ -65,9 +65,9 @@
                     <div class="col-xs-12 noidung">
                         <div class="iconhome"><i class="fa fa-home"></i></div>
                         <ul>
-                            <li>Project Manager</li>
-                            <li>Intern Manager</li>
-                            <li>Inventory Manager</li>
+                            <li><a href="~/Admin/ProjectManager">Project Manager</a></li>
+                            <li><a href="#">Intern Manager</a></li>
+                            <li><a href="">Inventory Manager</a></li>
                         </ul>
                     </div>
                 </div>
@@ -80,99 +80,40 @@
             <div class="row">
                 <div class="col-xs-8">
 
+                    @foreach (var item in _4Slide)
+                    {
+                        <div class="motslide active" style="background-image: url('../../Asset/images/@item.imagecover')">
+                            <div class="noidung ">
+                                <h3 class="tieudeslide">@item.FullName.</h3>
+                                <p class="motaslide">
+                                   @item.userdes
+                                </p>
+                            </div>
+                        </div> <!-- het mot slide -->
+                    }
                     
-
-
-
-
-
-                    <div class="motslide active" style='background-image: url("../../Asset/images/1.jpg")'>
-                        <div class="noidung ">
-                            <h3 class="tieudeslide">Lorem ipsum dolor sit amet1.</h3>
-                            <p class="motaslide">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolor est laborum.
-                            </p>
-                        </div>
-                    </div> <!-- het mot slide -->
-                    <div class="motslide" style="background-image: url('../../Asset/images/2.jpg')">
-                        <div class="noidung">
-                            <h3 class="tieudeslide">Lorem ipsum dolor sit amet2.</h3>
-                            <p class="motaslide">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolor est laborum.
-                            </p>
-                        </div>
-                    </div> <!-- het mot slide -->
-                    <div class="motslide" style="background-image: url('../../Asset/images/4.jpg')">
-                        <div class="noidung">
-                            <h3 class="tieudeslide">Lorem ipsum dolor sit amet3.</h3>
-                            <p class="motaslide">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolor est laborum.
-                            </p>
-                        </div>
-                    </div> <!-- het mot slide -->
-                    <div class="motslide" style="background-image: url('../../Asset/images/5.jpg')">
-                        <div class="noidung">
-                            <h3 class="tieudeslide">Lorem ipsum dolor sit amet4.</h3>
-                            <p class="motaslide">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolor est laborum.
-                            </p>
-                        </div>
-                    </div> <!-- het mot slide -->
-
-
                     <div class="nuttrai" data-endslide="endslide"><i class="fa fa-chevron-left"></i></div>
                     <div class="nutphai" data-endslide="endslide"><i class="fa fa-chevron-right"></i></div>
 
                 </div> <!-- het slide lớn -->
 
+
+
                 <div class="col-xs-4">
                     <div class="slideshow">
+                        @foreach (var item in _4Slide)
+                        {
+                            <div class="slidenho" style="background-image:url('../../Asset/images/@item.imagecover')">
+                                <div class="noidung">
+                                    <h3 class="tdslidenho">@item.FullName.</h3>
+                                    <p class="mtslidenho">
+                                       @item.userdes
+                                    </p>
+                                </div>
+                            </div> <!-- het mot slide -->
 
-                        <div class="slidenho" style="background-image:url('../../Asset/images/2.jpg')">
-                            <div class="noidung">
-                                <h3 class="tdslidenho">Lorem ipsum dolor sit amet.</h3>
-                                <p class="mtslidenho">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolor est laborum.
-                                </p>
-                            </div>
-                        </div> <!-- het mot slide -->
-                        <div class="slidenho" style="background-image:url('../../Asset/images/2.jpg')">
-                            <div class="noidung">
-                                <h3 class="tdslidenho">Lorem ipsum dolor sit amet.</h3>
-                                <p class="mtslidenho">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolor est laborum.
-                                </p>
-                            </div>
-                        </div> <!-- het mot slide -->
-                        <div class="slidenho" style="background-image:url('../../Asset/images/2.jpg')">
-                            <div class="noidung">
-                                <h3 class="tdslidenho">Lorem ipsum dolor sit amet.</h3>
-                                <p class="mtslidenho">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolor est laborum.
-                                </p>
-                            </div>
-                        </div> <!-- het mot slide -->
-
-                        <div class="slidenho" style="background-image:url('../../Asset/images/2.jpg')">
-                            <div class="noidung">
-                                <h3 class="tdslidenho">Lorem ipsum dolor sit amet.</h3>
-                                <p class="mtslidenho">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolor est laborum.
-                                </p>
-                            </div>
-                        </div> <!-- het mot slide -->
-
-
-                       
-
+                        }
+                        
                     </div> <!-- end slideshow -->
                 </div> <!-- end col 4 -->
 
@@ -197,147 +138,39 @@
                     </fieldset>
                     <hr>
 
+                    @foreach (var item in _7Intern)
+                    {
+                        <div class="motintern mt-1 ">
 
-                    <div class="motintern mt-1 ">
+                            <div class="anhintern" style="background-image: url('../../Asset/images/@item.imagelogin')"></div>
+                            <div class="thongtinintern">
+                                <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
+                                <h4 class="internname">@item.FullName</h4>
+                                <p class="motaintern">
+                                    @item.userdes
+                                </p>
+                                <div class="cacnoidungnho">
+                                    <small class="mr-1">Number project joined: <span class="so">10</span></small>
+                                    <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
+                                    <small><i class="fa fa-university"></i> University: <span class="so">@item.University</span></small>
+                                </div>
 
-                        <div class="anhintern" style="background-image: url('../../Asset/images/2.jpg')"></div>
-                        <div class="thongtinintern">
-                            <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
-                            <h4 class="internname">phạm văn khánh</h4>
-                            <p class="motaintern">
-                                Lorem ipsum dolor sit ame aliquip ex ea commodo
-                                consequat. Duis aute irure dolor  laborum.
-                            </p>
-                            <div class="cacnoidungnho">
-                                <small class="mr-1">Number project joined: <span class="so">10</span></small>
-                                <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
-                                <small><i class="fa fa-university"></i> University: <span class="so">FPT</span></small>
-                            </div>
+                            </div> <!-- end thong tin intern -->
+                        </div> <!-- end mot intern  -->
+                    }
+                    
 
-                        </div> <!-- end thong tin intern -->
-                    </div> <!-- end mot intern  -->
-
-                    <div class="motintern mt-1 ">
-
-                        <div class="anhintern" style="background-image: url('../../Asset/images/2.jpg')"></div>
-                        <div class="thongtinintern">
-                            <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
-                            <h4 class="internname">phạm văn khánh</h4>
-                            <p class="motaintern">
-                                Lorem ipsum dolor sit ame aliquip ex ea commodo
-                                consequat. Duis aute irure dolor  laborum.
-                            </p>
-                            <div class="cacnoidungnho">
-                                <small class="mr-1">Number project joined: <span class="so">10</span></small>
-                                <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
-                                <small><i class="fa fa-university"></i> University: <span class="so">FPT</span></small>
-                            </div>
-
-                        </div> <!-- end thong tin intern -->
-                    </div> <!-- end mot intern  -->
-
-                    <div class="motintern mt-1 ">
-
-                        <div class="anhintern" style="background-image: url('../../Asset/images/2.jpg')"></div>
-                        <div class="thongtinintern">
-                            <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
-                            <h4 class="internname">phạm văn khánh</h4>
-                            <p class="motaintern">
-                                Lorem ipsum dolor sit ame aliquip ex ea commodo
-                                consequat. Duis aute irure dolor  laborum.
-                            </p>
-                            <div class="cacnoidungnho">
-                                <small class="mr-1">Number project joined: <span class="so">10</span></small>
-                                <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
-                                <small><i class="fa fa-university"></i> University: <span class="so">FPT</span></small>
-                            </div>
-
-                        </div> <!-- end thong tin intern -->
-                    </div> <!-- end mot intern  -->
-
-                    <div class="motintern mt-1 ">
-
-                        <div class="anhintern" style="background-image: url('../../Asset/images/2.jpg')"></div>
-                        <div class="thongtinintern">
-                            <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
-                            <h4 class="internname">phạm văn khánh</h4>
-                            <p class="motaintern">
-                                Lorem ipsum dolor sit ame aliquip ex ea commodo
-                                consequat. Duis aute irure dolor  laborum.
-                            </p>
-                            <div class="cacnoidungnho">
-                                <small class="mr-1">Number project joined: <span class="so">10</span></small>
-                                <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
-                                <small><i class="fa fa-university"></i> University: <span class="so">FPT</span></small>
-                            </div>
-
-                        </div> <!-- end thong tin intern -->
-                    </div> <!-- end mot intern  -->
-
-                    <div class="motintern mt-1 ">
-
-                        <div class="anhintern" style="background-image: url('../../Asset/images/2.jpg')"></div>
-                        <div class="thongtinintern">
-                            <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
-                            <h4 class="internname">phạm văn khánh</h4>
-                            <p class="motaintern">
-                                Lorem ipsum dolor sit ame aliquip ex ea commodo
-                                consequat. Duis aute irure dolor  laborum.
-                            </p>
-                            <div class="cacnoidungnho">
-                                <small class="mr-1">Number project joined: <span class="so">10</span></small>
-                                <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
-                                <small><i class="fa fa-university"></i> University: <span class="so">FPT</span></small>
-                            </div>
-
-                        </div> <!-- end thong tin intern -->
-                    </div> <!-- end mot intern  -->
-
-                    <div class="motintern mt-1 ">
-
-                        <div class="anhintern" style="background-image: url('../../Asset/images/2.jpg')"></div>
-                        <div class="thongtinintern">
-                            <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
-                            <h4 class="internname">phạm văn khánh</h4>
-                            <p class="motaintern">
-                                Lorem ipsum dolor sit ame aliquip ex ea commodo
-                                consequat. Duis aute irure dolor  laborum.
-                            </p>
-                            <div class="cacnoidungnho">
-                                <small class="mr-1">Number project joined: <span class="so">10</span></small>
-                                <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
-                                <small><i class="fa fa-university"></i> University: <span class="so">FPT</span></small>
-                            </div>
-
-                        </div> <!-- end thong tin intern -->
-                    </div> <!-- end mot intern  -->
-
-                    <div class="motintern mt-1 ">
-
-                        <div class="anhintern" style="background-image: url('../../Asset/images/2.jpg')"></div>
-                        <div class="thongtinintern">
-                            <div class="nutxoaintern btn btn-danger" data-toggle="modal" data-target="#thongbaoxoaintern">X</div>
-                            <h4 class="internname">phạm văn khánh</h4>
-                            <p class="motaintern">
-                                Lorem ipsum dolor sit ame aliquip ex ea commodo
-                                consequat. Duis aute irure dolor  laborum.
-                            </p>
-                            <div class="cacnoidungnho">
-                                <small class="mr-1">Number project joined: <span class="so">10</span></small>
-                                <small class="mr-1"><i class="fa fa-building"></i> Joined to Company: <span class="so">7/5/2017</span></small>
-                                <small><i class="fa fa-university"></i> University: <span class="so">FPT</span></small>
-                            </div>
-
-                        </div> <!-- end thong tin intern -->
-                    </div> <!-- end mot intern  -->
+                   
                     <!-- khoi các nut phân trang -->
                     <div class="khoiphantrang mt-1">
                         <span class="nutchuyentrangtrai"><i class="fa fa-chevron-left"></i></span>
                         <ul class="danhsachtrang">
-                            <li class="mottrang">1</li>
-                            <li class="mottrang">2</li>
-                            <li class="mottrang">3</li>
-                            <li class="mottrang">4</li>
+                            @for (int i = 1; i <= ViewBag.soPage; i++)
+                            {
+                                <li class="mottrang">@i</li>
+                            }
+                            
+                           
                         </ul>
                         <span class="nutchuyentranphai"><i class="fa fa-chevron-right"></i></span>
 
@@ -455,7 +288,7 @@
                                         <th>action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="danh_sach_student_register">
 
                                     <tr>
                                         <td class="fullname" data-idintern="1">nguyen huy hoang</td>
@@ -463,10 +296,11 @@
                                         <td class="university">Tran dai nghia</td>
                                         <td class="specialized">programer .net</td>
                                         <td class="specialized">programer .net</td>
-
                                         <td class="kichhoat tooltip-test" title="Active intern">InActive</td>
                                         <td><i class="fa fa-times"></i></td>
                                     </tr>
+
+
                                     <tr>
                                         <td class="fullname" data-idintern="1">nguyen huy hoang</td>
                                         <td class="birthday">17/05/1995</td>

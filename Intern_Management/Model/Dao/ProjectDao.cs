@@ -47,6 +47,29 @@ namespace Model.Dao
 
         }
 
+        public List<Project> GetProjectsByUserID(int userID,int roleKhacID,int statusProjectID,int statusProcessing)
+        {
+            List<Project> dsProject = new List<Project>();
+            var result = from dl in db.ProjectMembers
+                         where dl.RoleID != roleKhacID && dl.UserID == userID
+                         select dl.ProjectID;
+            List<int> dsProjectID = result.ToList();
+
+            //lay ds prject 
+
+            foreach (int item in dsProjectID)
+            {
+                Project temp = GetByID(item);
+                if(temp.StatusID==statusProjectID||temp.StatusID==statusProcessing)
+                {
+                    dsProject.Add(temp);
+                }
+                
+            }
+            return dsProject;
+
+        }
+
         public int CountProjectByStatusID(int statusID)
         {
             return db.Projects.Count(x => x.StatusID == statusID);
@@ -145,19 +168,36 @@ namespace Model.Dao
                 //update lai manager ben bang project member
                 ProjectMemberDao pr = new ProjectMemberDao();
                 if (newManager != oldManager)
-                   return pr.UpdateManager(oldManager, newManager, entity.ProjectID);
+                    return pr.UpdateManager(oldManager, newManager, entity.ProjectID);
 
                 return 1;
             }
-        
+
+            catch
+            {
+                return 0;
+            }  
+        }
+        public int Update(int newStatus,int idProject)
+        {
+            try
+            {
+                var project = db.Projects.Find(idProject);
+                if (project == null) return 0;
+                else
+                {
+                    project.StatusID = newStatus;
+                    db.SaveChanges();
+                    
+
+                }
+                return 1;
+
+            }
             catch
             {
                 return 0;
             }
-           
-
-            
-            
         }
 
     }

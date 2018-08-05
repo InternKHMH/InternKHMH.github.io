@@ -6,118 +6,115 @@
 
 <!DOCTYPE html>
 
-<html>
+<html ng-app="myApp">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <script type="text/javascript" src="~/Asset/vendor/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Asset/js/Register.js"></script>
+    <script type="text/javascript" src="~/Asset/js/angular.min.js"></script>
+    <link rel="stylesheet" href="~/Asset/vendor/bootstrap.css">
+    <link rel="stylesheet" href="~/Asset/vendor/font-awesome.css">
+    <link rel="stylesheet" href="~/Asset/css/Register.css">
+
+
 </head>
 <body>
-    @using (Html.BeginForm()) 
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>User</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+
+    <div class="container" ng-controller="mainController">
+        <div class="row">
+            <div class="col-md-8 push-md-2">
+               <span class="tieude">Please Sign Up</span> <span class="chunhobentieude">It's free and always will be</span>
+                <div class="alert alert-info" ng-model="thongbaochung" ng-show="username.length==0||password.length==0||fullname.length==0||university.length==0||userdes.length==0||address.length==0||specialized.length==0||confirmpassword.length==0||comfirmpassword.length==0">{{thongbaochung}}!</div>
+                <hr />
+                <fieldset class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                                <input type="text" class="form-control"  placeholder="User Name" ng-model="username">
+                                 <span ng-if="username.length<=0" class="thongbao" data-toggle="tooltip" data-placement="top" title="vui lòng nhập vào username!">*</span>
+                         </div>
+                      
+
+                         <div class="col-xs-12 col-md-6">
+                                <input type="text" class="form-control"  placeholder="Full Name" ng-model="fullname">
+                                <span ng-if="fullname.length<=0" class="thongbao" data-toggle="tooltip" data-placement="top" title="vui lòng nhập vào họ và tên!">*</span>
+                        </div>
+
+                    </div>
+                 </fieldset>
+               
+
+                 <fieldset class="form-group">
+                     <div class="chacuathongbao">
+                         <input type="text" class="form-control" placeholder="University" ng-model="university">
+                         <span ng-if="university.length<=0" class="thongbao" data-toggle="tooltip" data-placement="top" title="bạn cần nhập vào trường đại học!">*</span>
+                     </div>
+                      
+                 </fieldset>
+
+                  <fieldset class="form-group">
+                      <div class="chacuathongbao">
+                          <textarea placeholder="introdution yourself!" style="width: 100%; padding:5px;" ng-model="userdes"></textarea>
+                          <span ng-if="userdes.length<=0 || userdes.length>200" class="thongbao" data-toggle="tooltip" data-placement="top" title="bạn cần giới thiệu một chút thông tin về bản thân <30 từ!">*</span>
+                      </div>
+                      
+                 </fieldset>
+
+
+                <fieldset class="form-group">
+                    <div class="chacuathongbao">
+                        <input type="text" class="form-control" placeholder="Address" ng-model="address">
+                        <span ng-if="address.length<=0" class="thongbao" data-toggle="tooltip" data-placement="top" title="nhập vào địa chỉ của bạn!">*</span>
+                    </div>
+                   
+                 </fieldset>
+
+                <fieldset class="form-group">
+                    <div class="chacuathongbao">
+                        <input type="text" class="form-control" placeholder="Specialized" ng-model="specialized">
+                        <span ng-if="specialized.length<=0|| specialized.length>30" class="thongbao" data-toggle="tooltip" data-placement="top" title="nhập vào lĩnh vực mà bạn muốn thực tập! (length<5)">*</span>
+                    </div>
+                   
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                             <input type="password" class="form-control"  placeholder="Password" ng-model="password">
+                            <span ng-if="password.length<=0" class="thongbao" data-toggle="tooltip" data-placement="top" title="bạn cần nhập password để đăng nhập!">*</span>
+
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <input type="password" class="form-control"  placeholder="Confirm Password" ng-model="confirmpassword">
+                            <span ng-if="confirmpassword.length<=0||confirmpassword!=password" class="thongbao" data-toggle="tooltip" data-placement="top" title="mật khẩu xác nhận phải trùng với mật khẩu bên!">*</span>
+                        </div>
+                    </div>
+                 </fieldset>
+                
+
+                <div class="form-inline chacuathongbao">
+                    select imagecover: <input type="text" readonly name="picture" id="picture" ng-model="picture"/>
+                    <span ng-if="picture.length<=0" class="thongbao" data-toggle="tooltip" data-placement="top" title="bạn cần chọn một ảnh làm ảnh đại diện của bạn!">*</span>
+                    <input type="file" name="fileUpload" id="fileUpload" accept="image/*" value="" style="display: none;" />
+                    <input type="button" name="btnUpload" id="btnUpload" value="..." class="btn btn-success" />
+                    <img width="100" id="pictureUpload" />
                 </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Passwords, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Passwords, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Passwords, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Stat, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Stat, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Stat, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.RoleID, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.RoleID, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.userdes, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.userdes, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.userdes, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.University, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.University, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.University, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.imagecover, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.imagecover, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.imagecover, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.imagelogin, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.imagelogin, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.imagelogin, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.userAddress, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.userAddress, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.userAddress, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.specialized, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.specialized, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.specialized, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <input type="submit"  value="Register" class="btn btn-primary btn-block btn-lg" ng-click="addIntern()">
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <a href="../../Admin/Login" class="btn btn-success btn-block btn-lg" ng-model="nutSignIn">Sign In</a>
+                    </div>
+
                 </div>
             </div>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
     </div>
+          
+
 </body>
 </html>
